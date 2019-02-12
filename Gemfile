@@ -42,6 +42,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
   gem 'launchy'
+  gem 'factory_bot_rails'
 end
 
 group :development do
