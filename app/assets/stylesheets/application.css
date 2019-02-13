@@ -13,3 +13,53 @@
  *= require_tree .
  *= require_self
  */
+
+ font {
+   color: #FE5F55;
+ }
+
+ h3 {
+   text-shadow: 2px 2px 4px #000000;
+ }
+body {
+  background-image: url(city_background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #FE5F55;
+  font-family: 'Kalam', cursive;
+}
+
+.btn {
+  border: 2px solid #FE5F55;
+  background-color: #FE5F55;
+  color: white;
+  padding: 24px 108px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn:hover{
+  border: 2px solid #FE5F55;
+  background-color: white;
+  color: #FE5F55;
+}
+
+.welcome_buttons {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.welcome_text {
+  text-align: center;
+  padding-bottom: 50px;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+.logo_one {
+  text-align: center;
+  padding-top: 30px;
+}
+.logo_two {
+  text-align: center;
+  padding-bottom: 20px;
+}
