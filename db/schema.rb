@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_12_173142) do
+ActiveRecord::Schema.define(version: 2019_02_13_221840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2019_02_12_173142) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "name"
+    t.string "species"
+    t.integer "frequency"
+    t.datetime "last_watered", default: "2019-02-13 22:30:53"
+    t.bigint "garden_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["garden_id"], name: "index_plants_on_garden_id"
   end
 
   create_table "user_gardens", force: :cascade do |t|
@@ -37,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_173142) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "plants", "gardens"
   add_foreign_key "user_gardens", "gardens"
   add_foreign_key "user_gardens", "users"
 end
