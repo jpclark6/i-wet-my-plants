@@ -1,6 +1,13 @@
 class DarkSkyService
+
+  def self.key
+    ENV['DARK_SKY_API_KEY']
+  end
+
   def self.conn(lat_lon)
-    key =  ENV['DARK_SKY_API_KEY']
-    @conn = Faraday.get  "https://api.darksky.net/forecast/#{key}/42.3601,-71.0589"
+  @conn =  Faraday.new(url: "https://api.darksky.net") do |f|
+      f.adapter Faraday.default_adapter
+    end
+    thing = @conn.get "/forecast/#{key}/#{lat_lon}"
   end
 end
