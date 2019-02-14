@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/dashboard/plants/new', to: 'plants#new', as: 'add_plant'
 
   get '/login', to: "sessions#new"
-  post '/login', to: "sessions#create"
+  get '/auth/facebook/callback', to: "sessions#create"
+
   delete '/logout', to: "sessions#destroy"
 end
