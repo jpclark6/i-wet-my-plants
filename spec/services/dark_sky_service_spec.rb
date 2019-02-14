@@ -5,7 +5,7 @@ describe 'Dark Sky Api' do
     zip = 80204
 
     response = DarkSkyService.forecast(zip)
-
-    expect(response.status).to eq(200)
+    keys = [:latitude, :longitude, :timezone, :currently, :minutely, :hourly, :daily, :flags, :offset]
+    expect(response.keys).to eq(keys)
   end
 end

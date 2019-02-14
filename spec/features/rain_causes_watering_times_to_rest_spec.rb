@@ -23,6 +23,7 @@ describe 'as a resgistered user on the dashboard' do
     visit '/dashboard'
 
     within(all('.plant').first) do
+      binding.pry
       expect(plant_1.hours_until_watering).to eq(1)
       expect(plant_1.hours_until_watering).to_not eq(1)
     end
