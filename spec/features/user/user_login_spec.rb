@@ -19,6 +19,20 @@ describe 'As a visitor to the site' do
       expect(page).to have_content("Logged In Successfully")
     end
 
+    it 'cant log in with bad credentials' do
+      user = User.create(name: "dave", zip_code: "80203", email: 'email@aol.com', password: 'password')
+
+      visit login_path
+
+      fill_in :email, with: user.email
+      fill_in :password, with: "poop emoji"
+      click_button 'Log In'
+
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content('Credentials Incorrect')
+
+    end
+
     it 'should let me log out' do
       user = User.create(name: "dave", zip_code: "80203", email: 'email@aol.com', password: 'password')
       user.gardens << Garden.create(name: 'Backyard')
