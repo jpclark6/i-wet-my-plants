@@ -22,7 +22,7 @@
    text-shadow: 2px 2px 4px #000000;
  }
 body {
-  background-image: uri(city_background.jpg);
+  background-image: image-url('city_background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   color: #FE5F55;
