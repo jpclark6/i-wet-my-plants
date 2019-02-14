@@ -15,13 +15,6 @@
   </head>
 
   <body>
-    <% if flash.any? %>
-      <div class="flash">
-        <% flash.each do |key, value| %>
-          <%= value %>
-        <% end %>
-      </div>
-    <% end %>
     <%= yield %>
   </body>
 </html>

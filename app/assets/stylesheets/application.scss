@@ -29,7 +29,7 @@ body {
   font-family: 'Kalam', cursive;
 }
 
-.btn {
+.btn-lg {
   border: 2px solid #FE5F55;
   background-color: #FE5F55;
   color: white;
@@ -38,7 +38,7 @@ body {
   cursor: pointer;
 }
 
-.btn:hover{
+.btn-lg:hover{
   border: 2px solid #FE5F55;
   background-color: white;
   color: #FE5F55;
@@ -62,4 +62,41 @@ body {
 .logo_two {
   text-align: center;
   padding-bottom: 20px;
+}
+
+.dashboard-body {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.garden {
+  padding-top: 20px;
+  background-color: rgba(255,255,255,0.6);
+  border: 1px solid white;
+  border-radius: 40px;
+
+  table {
+    font-size: 150%;
+    color: #1c64a8;
+  }
+
+  .btn-md {
+    border: 2px solid #FE5F55;
+    background-color: #FE5F55;
+    color: white;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .btn-md:hover{
+    border: 1px solid #FE5F55;
+    background-color: white;
+    color: #FE5F55;
+  }
+}
+
+.garden-header {
+  font-size: 330%;
 }

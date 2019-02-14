@@ -25,7 +25,6 @@ describe 'as a registered user' do
     within(all('.plant').first) do
       expect(page).to have_content(plant_1.name)
       expect(page).to have_content(plant_1.species)
-      expect(page).to have_content(plant_1.hours_since_watered)
       expect(page).to have_content(plant_1.hours_until_watering)
       expect(page).to have_link("Edit")
       expect(page).to have_link("Water Plant")
