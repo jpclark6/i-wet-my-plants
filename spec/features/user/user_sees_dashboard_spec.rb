@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'as a registered user' do
-  it 'visits dashboard' do
+  it 'visits garden' do
     user_1 = User.create!(name: "Bobby", zip_code: 84928, uid: '49j8jesj')
     user_1.gardens << Garden.create(name: 'Backyard')
     user_1.gardens.first.plants << plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24)
@@ -9,9 +9,9 @@ describe 'as a registered user' do
     user_1.gardens.first.plants << plant_3 = Plant.create(name: 'Elbert', species: 'Beet', frequency: 18)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
-    visit '/dashboard'
+    visit '/garden'
     within('.menu') do
-      expect(page).to have_link('Dashboard')
+      expect(page).to have_link('garden')
       expect(page).to have_link('Profile')
       expect(page).to have_link('Water All Plants')
       expect(page).to have_link('Logout')
