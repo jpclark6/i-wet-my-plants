@@ -1,8 +1,22 @@
-<nav class='menu'>
-  <ul>
-    <li><%= link_to 'Dashboard', dashboard_path %></li>
-    <li><%= link_to 'Profile', dashboard_path %></li>
-    <li><%= link_to 'Water All Plants', dashboard_path %></li>
-    <li><%= link_to 'Logout', logout_path, method: :delete %></li>
-  </ul>
+<nav class="navbar navbar-default menu" >
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">I Wet My Plants</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><%= link_to 'Dashboard', dashboard_path %></li>
+      <li><%= link_to 'Profile', dashboard_path %></li>
+      <li><%= link_to 'Water All Plants', dashboard_path %></li>
+      <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+    </ul>
+  </div>
 </nav>
+
+<% if flash.any? %>
+  <div class="flash">
+    <% flash.each do |key, value| %>
+      <%= value %>
+    <% end %>
+  </div>
+<% end %>

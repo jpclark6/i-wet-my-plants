@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get '/dashboard/plants/:id/edit', to: 'plants#edit', as: 'edit_plant'
   post '/dashboard/plants/:id/water', to: 'plants#water', as: 'water_plant'
+  get '/dashboard/plants/new', to: 'plants#new', as: 'add_plant'
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
