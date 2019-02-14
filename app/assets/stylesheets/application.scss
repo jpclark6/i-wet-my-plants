@@ -19,12 +19,13 @@
  }
 
  h3 {
-   text-shadow: 2px 2px 4px #000000;
+   text-shadow: 2px 2px 5px #000;
+   font-size: 40px;
  }
 body {
-  background-image: url(city_background.jpg);
-  background-repeat: no-repeat;
+  background-image: image-url('city_background.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
   color: #FE5F55;
   font-family: 'Kalam', cursive;
 }
@@ -33,8 +34,9 @@ body {
   border: 2px solid #FE5F55;
   background-color: #FE5F55;
   color: white;
-  padding: 24px 108px;
-  font-size: 16px;
+  padding: 14px 78px;
+  font-size: 26px;
+  margin: 0 10px;
   cursor: pointer;
 }
 
@@ -46,20 +48,24 @@ body {
 
 .welcome_buttons {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 20px;
   padding-bottom: 50px;
 }
 .welcome_text {
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   padding-left: 80px;
   padding-right: 80px;
 }
 .logo_one {
   text-align: center;
-  padding-top: 30px;
+  padding-bottom: 30px;
 }
 .logo_two {
   text-align: center;
+  padding-top: 30px;
   padding-bottom: 20px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 500px;
+  text-shadow: 1px 1px 5px #000;
 }

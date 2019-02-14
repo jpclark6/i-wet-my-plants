@@ -4,6 +4,13 @@ Rails.application.routes.draw do
 
   get '/register', to: "users#new"
 
+  get '/dashboard', to: "gardens#index", as: 'dashboard'
+
+  get '/dashboard/plants/:id/edit', to: 'plants#edit', as: 'edit_plant'
+  post '/dashboard/plants/:id/water', to: 'plants#water', as: 'water_plant'
+
   get '/login', to: "sessions#new"
   get '/auth/facebook/callback', to: "sessions#create"
+
+  delete '/logout', to: "sessions#destroy"
 end

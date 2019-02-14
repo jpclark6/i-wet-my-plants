@@ -10,8 +10,12 @@ class DarkSkyService
     end
   end
 
-  def self.forecast(lat_lon)
-    conn.get "/forecast/#{key}/#{lat_lon}"
+  def self.forecast(zip)
+    geo_service = GoogleGeocodeService.new(zip)
+    lat = geo_service.lat
+    lng = geo_service.lng
+    response = conn.get "/forecast/#{key}/#{lat},#{lng}"
+    JSON.parse(response.body, symbolize_names: true)
   end
 
 end
