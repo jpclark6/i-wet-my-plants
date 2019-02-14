@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_02_13_221840) do
     t.string "name"
     t.string "species"
     t.integer "frequency"
-    t.datetime "last_watered", default: "2019-02-13 22:39:27"
+    t.datetime "last_watered", default: "2019-02-14 01:45:26"
     t.bigint "garden_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 2019_02_13_221840) do
     t.integer "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "screen_name"
+    t.string "uid"
+    t.string "oauth_token"
+    t.string "oauth_token_secret"
   end
 
   add_foreign_key "plants", "gardens"
