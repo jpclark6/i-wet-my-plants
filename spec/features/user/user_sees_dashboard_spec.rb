@@ -20,19 +20,11 @@ describe 'as a registered user' do
 
     within(all('.plant').first) do
       expect(page).to have_content(plant_1.name)
+      expect(page).to have_content(plant_1.species)
       expect(page).to have_content(plant_1.hours_since_watered)
-      expect(page).to have_content(plant_1.hours_until_water)
-      expect(page).to have_link(edit_plant_path(plant_1))
-      expect(page).to have_link(water_plant_path(plant_1))
+      expect(page).to have_content(plant_1.hours_until_watering)
+      expect(page).to have_link("Edit")
+      expect(page).to have_link("Water Plant")
     end
   end
 end
-
-
-
-# As a registered user
-# When I visit '/dashboard'
-# I see a heading 'My Garden".
-# I see a drop down menu with options to go home, profile, logout, water all plants.
-# I see all plants with their name, hours since it was watered, hours until it needs water, edit, a water plant button.
-# The plants will be organized by highest need of water.
