@@ -19,8 +19,7 @@ describe 'As a visitor to the site' do
       expect(page).to have_content("Logged In Successfully")
     end
 
-    it 'should let me log out'
-    it 'should let me log in' do
+    it 'should let me log out' do
       user = User.create(name: "dave", zip_code: "80203", email: 'email@aol.com', password: 'password')
       user.gardens << Garden.create(name: 'Backyard')
       user.gardens.first.plants << plant_1 = Plant.new(name: 'Alice', species: 'Rose', frequency: 24)
