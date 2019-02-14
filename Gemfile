@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 gem 'figaro'
 gem 'faraday'
+gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bundler', '~> 2.0.1'
