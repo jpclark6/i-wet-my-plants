@@ -15,5 +15,5 @@
     <p>Hello, <%= current_user.name %></p>
   <% else %>
     <%= link_to 'Sign in with Twitter', twitter_login_path, class: "btn btn-outline-primary btn-lg" %>
-  <%= end  %>
+  <% end  %>
 </div>
