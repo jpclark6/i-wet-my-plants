@@ -17,6 +17,11 @@ describe 'as a registered user' do
       expect(page).to have_link('Logout')
     end
 
+    within(all('.garden').first) do
+      expect(page).to have_content(user_1.gardens.first.name)
+      expect(page).to have_link('Add Plant')
+    end
+
     within(all('.plant').first) do
       expect(page).to have_content(plant_1.name)
       expect(page).to have_content(plant_1.species)
