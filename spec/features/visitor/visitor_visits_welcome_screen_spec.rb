@@ -6,7 +6,6 @@ describe 'as a visitor on the welcome screen' do
 
     expect(page).to have_content("I Wet My Plants is an app that helps you remember to water the plants in your garden, and send you a friendly reminder if you forget.")
 
-    expect(page).to have_link("Register")
-    expect(page).to have_link("Sign-In")
+    expect(page).to have_link("Login with Facebook")
   end
 end

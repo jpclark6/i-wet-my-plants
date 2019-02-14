@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'as a registered user' do
   it 'visits dashboard' do
-    user_1 = User.create!(name: "Bobby", zip_code: 84928)
+    user_1 = User.create!(name: "Bobby", zip_code: 84928, uid: '49j8jesj')
     user_1.gardens << Garden.create(name: 'Backyard')
     user_1.gardens.first.plants << plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24)
     user_1.gardens.first.plants << plant_2 = Plant.create(name: 'Tom', species: 'Carrot', frequency: 12)

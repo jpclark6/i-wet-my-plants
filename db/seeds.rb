@@ -1,4 +1,4 @@
-user_1 = User.create!(name: "Bobby", zip_code: 84928)
+user_1 = User.create!(name: "Bobby", zip_code: 84928, uid: '3297328fha')
 user_1.gardens << Garden.create(name: 'Backyard')
 garden = user_1.gardens.first
 Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, garden: garden)
