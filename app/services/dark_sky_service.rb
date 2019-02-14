@@ -10,6 +10,7 @@ class DarkSkyService
     end
   end
 
+
   def self.forecast(zip)
     geo_service = GoogleGeocodeService.new(zip)
     lat = geo_service.lat
