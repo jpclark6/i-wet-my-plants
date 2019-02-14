@@ -1,0 +1,22 @@
+<nav>
+  <ul>
+    <li><%= link_to 'Dashboard', dashboard_path %></li>
+    <li><%= link_to 'Profile', dashboard_path %></li>
+    <li><%= link_to 'Water All Plants', dashboard_path %></li>
+    <li><%= link_to 'Logout', dashboard_path %></li>
+  </ul>
+</nav>
+<div class='main-heading'>
+  <h1>My Garden</h1>
+</div>
+<%= @plants.each do |plant| %>
+  <div class='plant' id='plant-<%= plant.id %>'>
+    <ul>
+      <li><%= plant.name %></li>
+      <li><%= plant.hours_since_watered %></li>
+      <li><%= plant.hours_until_water %></li>
+      <li><%= link_to "Edit", edit_plant_path(plant) %></li>
+      <li><%= link_to "Water Plant", water_plant_path(plant) %>
+    </ul>
+  </div>
+<% end %>
