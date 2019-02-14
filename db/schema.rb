@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_13_221840) do
+ActiveRecord::Schema.define(version: 2019_02_14_052604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_02_13_221840) do
     t.string "name"
     t.string "species"
     t.integer "frequency"
-    t.datetime "last_watered", default: "2019-02-13 22:39:27"
+    t.datetime "last_watered", default: "2019-02-14 05:26:34"
     t.bigint "garden_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2019_02_13_221840) do
     t.integer "zip_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "password"
   end
 
   add_foreign_key "plants", "gardens"

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a visitor to the site' do
   describe 'when I visit the login path' do
     it 'should let me log in' do
-      user = create(:user, email: 'email1@aol.com', password: 'password1')
+      user = User.create(name: "dave", zip_code: "80203", email: 'email@aol.com', password: 'password')
 
       visit login_path
 
