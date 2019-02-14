@@ -17,8 +17,13 @@ class SessionsController < ApplicationController
   
   def facebook_user(auth_hash)
     user = User.find_or_create_from_auth_hash(auth_hash)
-    session[:user_id] = user.id
-    redirect_to root_path
+    if user
+      flash[:success] = "Welcome #{user.name}"
+      session[:user_id] = user.id
+    else
+      flash[:error] = "Login failed"
+    end
+    redirect_to plants_path
   end
   
 end

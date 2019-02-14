@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'as a resgistered user on the dashboard' do
+describe 'as a resgistered user on the garden' do
   xit 'changes watering times if raining' do
     user_1 = User.create(name: "Bobby", zip_code: 84928)
     user_1.gardens << Garden.create(name: 'Backyard')
@@ -20,7 +20,7 @@ describe 'as a resgistered user on the dashboard' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
-    visit '/dashboard'
+    visit '/garden'
 
     within(all('.plant').first) do
       binding.pry

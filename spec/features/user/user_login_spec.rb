@@ -15,7 +15,7 @@
 #       fill_in :password, with: user.password
 #       click_button 'Log In'
 
-#       expect(current_path).to eq(dashboard_path)
+#       expect(current_path).to eq(garden_path)
 #       expect(page).to have_content("Logged In Successfully")
 #     end
 
@@ -46,7 +46,7 @@
 #       fill_in :password, with: user.password
 #       click_button 'Log In'
 
-#       expect(current_path).to eq(dashboard_path)
+#       expect(current_path).to eq(garden_path)
 #       expect(page).to have_content("Logged In Successfully")
 
 #       click_on "Logout"

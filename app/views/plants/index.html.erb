@@ -1,12 +1,13 @@
 <%= render "layouts/nav" %>
-<div class='dashboard-body'>
+<div class='garden-body'>
   <div class='main-heading'>
     <h1 class='garden-header'>My Gardens</h1>
   </div>
-  <% @gardens.each do |garden| %>
+
+  <% if current_garden %>
     <div class='garden'>
-      <h2><%= garden.name %></h2>
-      <%= link_to "Add Plant", add_plant_path(garden), class: 'btn btn-outline-primary btn-md' %>
+      <h2><%= current_user.garden.name %></h2>
+      <%= link_to "Add Plant", new_plant_path, class: 'btn btn-outline-primary btn-md' %>
       <div class="container">
         <table class="table table-hover">
           <thead>
@@ -19,9 +20,9 @@
             </tr>
           </thead>
           <tbody>
-            <% garden.plants.each do |plant| %>
+            <% @plants.each do |plant| %>
               <tr class='plant' id='plant-<%= plant.id %>'>
-                <td><%= plant.name %></td>
+                <td><%= link_to plant.name, plant_path(plant) %></td>
                 <td><%= plant.species %></td>
                 <td><%= plant.hours_until_watering %></td>
                 <td><%= link_to "Edit", edit_plant_path(plant) %></td>
@@ -32,5 +33,7 @@
         </table>
       </div>
     </div>
+  <% else %>
+    <%= link_to "Add Garden", new_garden_path %>
   <% end %>
 </div>

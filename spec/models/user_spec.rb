@@ -6,7 +6,6 @@ describe User do
 
   end
   describe 'relationships' do
-    it { should have_many(:user_gardens) }
-    it { should have_many(:gardens).through(:user_gardens) }
+    it { should have_one(:garden) }
   end
 end
