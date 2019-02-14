@@ -11,9 +11,9 @@
 </div>
 
 <div class="welcome_buttons">
-  <%= link_to 'Register', register_path, class: "btn btn-outline-primary btn-lg" %>
-</div>
-
-<div class="welcome_buttons">
-  <%= link_to 'Sign-In', login_path, class: "btn btn-outline-primary btn-lg" %>
+  <% if current_user %>
+    <p>Hello, <%= current_user.name %></p>
+  <% else %>
+    <%= link_to 'Sign in with Twitter', twitter_login_path, class: "btn btn-outline-primary btn-lg" %>
+  <%= end  %>
 </div>

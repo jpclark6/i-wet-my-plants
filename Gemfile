@@ -47,6 +47,7 @@ group :development, :test do
   gem 'capybara'
   gem 'simplecov'
   gem 'factory_bot_rails'
+  gem "omniauth-twitter"
 end
 
 group :development do

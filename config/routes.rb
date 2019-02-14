@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   get '/register', to: "users#new"
 
   get '/login', to: "sessions#new"
+
+  get '/auth/twitter', as: "twitter_login"
+  get '/auth/twitter/callback', to: "sessions#create"
 end
