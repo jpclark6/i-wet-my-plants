@@ -1,7 +1,7 @@
 class PlantsController < ApplicationController
   def index
     #garden index page
-    @plants = current_user.plants
+    @plants = current_garden.plants
   end
 
   def show
@@ -13,6 +13,11 @@ class PlantsController < ApplicationController
   end
 
   def water
+    #add water method on plant instance
+    redirect_to garden_path
+  end
+
+  def water_all
     #add water method on plant instance
     redirect_to garden_path
   end

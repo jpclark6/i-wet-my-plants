@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_231241) do
 
   create_table "gardens", force: :cascade do |t|
     t.string "name"
+    t.integer "zip_code"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_gardens_on_user_id"
   end
@@ -32,7 +33,6 @@ ActiveRecord::Schema.define(version: 2019_02_14_231241) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.integer "zip_code"
     t.string "oauth_token"
     t.string "uid"
   end
