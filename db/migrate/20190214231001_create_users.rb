@@ -5,8 +5,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :zip_code
       t.string :oauth_token
       t.string :uid
-
-      t.timestamps
     end
   end
 end
