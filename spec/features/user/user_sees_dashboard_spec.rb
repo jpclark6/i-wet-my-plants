@@ -8,7 +8,6 @@ describe 'as a registered user' do
     user_1.gardens.first.plants << plant_2 = Plant.new(name: 'Tom', species: 'Carrot', frequency: 12)
     user_1.gardens.first.plants << plant_3 = Plant.new(name: 'Elbert', species: 'Beet', frequency: 18)
 
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     visit '/dashboard'
     within('.menu') do

@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe Plant do
-  # describe 'relationships' do
-  #   it { has_one :garden }
-  # end
-  # describe 'validations' do
-  #   it { should validate_presence_of(:species) }}
-  #   it { should validate_presence_of(:frequency) }}
-  # end
+  describe 'relationships' do
+    it { should belong_to :garden }
+  end
+  describe 'validations' do
+    it { should validate_presence_of(:species) }
+    it { should validate_presence_of(:frequency) }
+  end
   describe 'instance methods' do
     it '.hours_since_watered' do
       garden = Garden.create(name: 'Sally')
