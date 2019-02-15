@@ -4,7 +4,7 @@ class CreatePlants < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :species
       t.integer :frequency
-      t.datetime :last_watered
+      t.datetime :last_watered, default: Time.now
       t.references :garden, foreign_key: true
     end
   end

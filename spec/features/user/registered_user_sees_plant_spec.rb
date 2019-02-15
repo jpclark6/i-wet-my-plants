@@ -31,7 +31,7 @@ describe 'as a registered user' do
    # When I fill those fields with valid input
    click_on 'Create Plant'
    #I should click "Create plant"
-   plant_id = Plants.all.last.id
+   plant_id = Plant.all.last.id
    expect_current(path).to eg(plants_path(plant_id))
    #I should be in the plant's show page
    expect(page).to have_content("Your plant was added")
