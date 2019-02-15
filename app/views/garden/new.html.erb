@@ -1,0 +1,7 @@
+<%= form_for garden_index_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :zip_code %>
+  <%= f.number_field :zip_code %>
+  <%= f.submit "Create Garden" %>
+<% end %>
