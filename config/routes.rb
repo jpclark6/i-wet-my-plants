@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
   resources :plants
-  resources :garden, only: [:new, :create, :index]
+  resources :gardens, only: [:new, :create]
 
   get '/water_plant/:id', to: 'plants#water', as: 'water_plant'
   get '/water_plants', to: 'plants#water_all', as: 'water_all_plants'
