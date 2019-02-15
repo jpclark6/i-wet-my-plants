@@ -5,7 +5,7 @@ describe 'as a registered user' do
     garden.plants << plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
     garden.plants << plant_2 = Plant.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: Time.now)
     garden.plants << plant_3 = Plant.create(name: 'Elbert', species: 'Beet', frequency: 18, last_watered: Time.now)
-    
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     # As a registered user.
     visit '/plants'
@@ -14,10 +14,12 @@ describe 'as a registered user' do
       expect(page).to have_link('Garden')
       expect(page).to have_link('Water All Plants')
       expect(page).to have_link('Logout')
-      expect(page).to have_button('Add Plant')
+    end
+    within('.garden') do
+    expect(page).to have_link('Add Plant')
+    click_on 'Add Plant'
     end
     # I should see a "Add plant" link,
-    click_on 'Add Plant'
 
     name = 'dave'
     species = 'species 1'
