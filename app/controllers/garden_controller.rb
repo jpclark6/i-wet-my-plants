@@ -1,9 +1,16 @@
 class GardenController < ApplicationController
   def new
-    #new garden page
+    @garden = Garden.new
   end
 
   def create
-    #create & redirect to plants index plants_path
+    @garden = Garden.create(params)
+    if @garden.save
+      redirect_to plants_path
+      flash[:success] = "Your garden has been created."
+    else
+      render :new
+      flash[:error] = "ERROR: Your garden has not been created."
+    end
   end
 end
