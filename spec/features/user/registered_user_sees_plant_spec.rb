@@ -92,9 +92,10 @@ describe 'as a registered user' do
     # I see a message "Incorrect Info"
  end
  it 'can edit plant' do
-   user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
+   user_1 = User.create(name: "Bobby", uid: '49j8jesj')
    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 84928)
    plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
+   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
    visit '/plants'
 
@@ -102,7 +103,7 @@ describe 'as a registered user' do
 
    click_on 'Edit Plant'
 
-   expect(current_path).to eq(edit_plant_path)
+   expect(current_path).to eq(edit_plant_path(plant_1))
 
    name = 'maddie'
    species = 'species 3'

@@ -1,0 +1,11 @@
+<%= form_tag plant_path(@plant) do %>
+  <ul>
+    <li><%= label_tag :name %></li>
+    <li><%= text_field_tag :name %></li>
+    <li><%= label_tag :species %></li>
+    <li><%= text_field_tag :species %></li>
+    <li><%= label_tag :frequency %></li>
+    <li><%= number_field_tag :frequency %></li>
+    <li><%= submit_tag "Update"%></li>
+  </ul>
+<% end %>

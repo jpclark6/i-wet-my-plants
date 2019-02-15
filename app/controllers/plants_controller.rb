@@ -24,7 +24,9 @@ class PlantsController < ApplicationController
   end
 
   def edit
-    #plant edit page
+    @user = current_user
+    @garden = @user.garden
+    @plant = @garden.plants.where(id: params[:id])
   end
 
   def water
