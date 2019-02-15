@@ -11,12 +11,11 @@ class PlantsController < ApplicationController
   def create
     garden = current_user.garden
     plant = garden.plants.create(plant_params)
-    binding.pry
     if plant.save
       redirect_to plants_path(plant.id)
       flash[:success] = "Your plant was added"
     else
-      flash[:error]
+      flash[:error] = "Invalid Info"
       render new
     end
   end

@@ -32,7 +32,7 @@ describe 'as a registered user' do
    click_on 'Create Plant'
    #I should click "Create plant"
    plant_id = Plant.all.last.id
-   expect_current(path).to eg(plants_path(plant_id))
+   expect(current_path).to eq(plants_path(plant_id))
    #I should be in the plant's show page
    expect(page).to have_content("Your plant was added")
    #and see a message "Your plant was added".
