@@ -7,9 +7,9 @@ describe 'as a registered user' do
     garden.plants << plant_3 = Plant.create(name: 'Elbert', species: 'Beet', frequency: 18, last_watered: Time.now)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
-    # As a registered user.
+
     visit '/plants'
-    # When I visit my garden,
+
     within('.menu') do
       expect(page).to have_link('Garden')
       expect(page).to have_link('Water All Plants')
@@ -19,23 +19,21 @@ describe 'as a registered user' do
     expect(page).to have_link('Add Plant')
     click_on 'Add Plant'
     end
-    # I should see a "Add plant" link,
 
     name = 'dave'
     species = 'species 1'
     frequency = '5'
 
-   fill_in 'name', with: name
-   fill_in 'species', with: species
-   fill_in 'frequency', with: frequency
-   # When I fill those fields with valid input
-   click_on 'Create Plant'
-   #I should click "Create plant"
-   plant_id = Plant.all.last.id
-   expect(current_path).to eq(plants_path(plant_id))
-   #I should be in the plant's show page
-   expect(page).to have_content("Your plant was added")
-   #and see a message "Your plant was added".
+    fill_in 'name', with: name
+    fill_in 'species', with: species
+    fill_in 'frequency', with: frequency
+
+    click_on 'Create Plant'
+
+    plant_id = Plant.all.last.id
+    expect(current_path).to eq(plants_path(plant_id))
+
+    expect(page).to have_content("Your plant was added")
   end
 
   it 'it cannot create a plant with bad info' do
@@ -46,9 +44,9 @@ describe 'as a registered user' do
     garden.plants << plant_3 = Plant.create(name: 'Elbert', species: 'Beet', frequency: 18, last_watered: Time.now)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
-    # As a registered user.
+
     visit '/plants'
-    # When I visit my garden,
+
     within('.menu') do
       expect(page).to have_link('Garden')
       expect(page).to have_link('Water All Plants')
@@ -58,17 +56,15 @@ describe 'as a registered user' do
     expect(page).to have_link('Add Plant')
     click_on 'Add Plant'
     end
-    # I should see a "Add plant" link,
 
     name = 'dave'
     frequency = '5'
 
    fill_in 'name', with: name
    fill_in 'frequency', with: frequency
-   # When I fill those fields with invalid input
+
    click_on 'Create Plant'
-   #I should click "Create plant"
+
    expect(page).to have_content("species can't be blank")
-   # I see a message "Incorrect Info"
  end
 end
