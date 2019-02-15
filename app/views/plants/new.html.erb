@@ -1,4 +1,11 @@
 <%= form_for [@plant] do %>
+<% if @errors %>
+  <div class="flash">
+    <% @errors.messages.each do |message| %>
+      <li><%= "#{message[0].to_s} " "#{message[1].pop}" %></li>
+    <% end %>
+  </div>
+<% end %>
   <ul>
     <li><%= label_tag :name %></li>
     <li><%= text_field_tag :name %></li>

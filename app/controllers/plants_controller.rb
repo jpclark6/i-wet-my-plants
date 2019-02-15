@@ -15,7 +15,7 @@ class PlantsController < ApplicationController
       redirect_to plants_path(@plant.id)
       flash[:success] = "Your plant was added"
     else
-      flash[:error] = "Invalid Info"
+      @errors = @plant.errors
       render :new
     end
   end

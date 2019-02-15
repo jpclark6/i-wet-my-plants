@@ -68,8 +68,9 @@ describe 'as a registered user' do
    # When I fill those fields with invalid input
    click_on 'Create Plant'
    #I should click "Create plant"
+   save_and_open_page
 
-   expect(page).to have_content("Invalid Info")
+   expect(page).to have_content("species can't be blank")
    # I see a message "Incorrect Info"
  end
 end
