@@ -1,3 +1,4 @@
+require "rails_helper"
 describe 'as a registered user' do
   it 'sees a plant happy path' do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
