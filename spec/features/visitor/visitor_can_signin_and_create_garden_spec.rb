@@ -8,13 +8,15 @@ describe 'As a first time visitor to the site who signs in' do
     visit '/gardens/new'
 
     name = "Dave's Garden"
+    twitter_handle = "iwetmyplants1"
     zip_code = 80203
 
-    fill_in 'name', with: name
-    fill_in 'twitter_handle', with: twitter_handle
-    fill_in 'zip_code', with: zip_code
-    click_on 'Create Garden'
+    fill_in :garden_name, with: name
+    fill_in :garden_twitter_handle, with: twitter_handle
 
+    fill_in :garden_zip_code, with: zip_code
+    click_on 'Create Garden'
+save_and_open_page
     expect(current_path).to eq('/plants')
     expect(page).to have_content(name)
   end
