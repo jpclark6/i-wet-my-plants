@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe 'as a registered user' do
-  it 'can water a single plant' do
+  it 'can water all plants plant' do
     yesterday = 1.day.ago
     two_days_ago = 2.days.ago
     user_1 = User.create(name: "Bobby", uid: '49j8jesj')
@@ -28,17 +28,17 @@ describe 'as a registered user' do
     end
     # The button will reset the clock timer for every plant in the garden.
     within "#plant-#{plant_2.id}" do
-      plant = Plant.find(plant_1.id)
+      plant = Plant.find(plant_2.id)
       expect(plant.hours_until_watering).to eq(12)
       expect(plant.hours_since_watered).to eq(0)
-      expect(page).to have_content(plant_1.hours_until_watering)
+      expect(page).to have_content(plant_2.hours_until_watering)
     end
     # The button will reset the clock timer for every plant in the garden.
     within "#plant-#{plant_3.id}" do
-      plant = Plant.find(plant_1.id)
+      plant = Plant.find(plant_3.id)
       expect(plant.hours_until_watering).to eq(18)
       expect(plant.hours_since_watered).to eq(0)
-      expect(page).to have_content(plant_1.hours_until_watering)
+      expect(page).to have_content(plant_3.hours_until_watering)
     end
     # The button will reset the clock timer for every plant in the garden.
   end
