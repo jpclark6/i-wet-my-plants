@@ -1,4 +1,3 @@
-
 class TwitterTweeterService
   def tweet
     Twitter::REST::Client.new do |config|
