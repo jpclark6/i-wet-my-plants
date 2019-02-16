@@ -14,7 +14,6 @@ describe 'as a registered user' do
     # As a registered user.
 
     visit '/plants'
-    save_and_open_page
 
      # When I visit my user dashboard
     within "#plant-#{plant_1.id}" do
@@ -25,13 +24,12 @@ describe 'as a registered user' do
     # I see a button "Water plant" next to each plant.
     # When I click on "Water plant"
     expect(current_path).to eq(plants_path)
-    save_and_open_page
     # I will remain on the dashboard path
     within "#plant-#{plant_1.id}" do
       plant = Plant.find(plant_1.id)
       expect(plant.hours_until_watering).to eq(24)
       expect(plant.hours_since_watered).to eq(0)
-      # expect(page).to have_content(plant_1.hours_until_watering)
+      expect(page).to have_content(plant_1.hours_until_watering)
     end
      # The button will reset the clock timer.
   end
