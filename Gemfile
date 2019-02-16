@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'faraday'
 gem 'omniauth-facebook'
+gem 'twitter'
 
 gem 'launchy'
 # Use Capistrano for deployment
