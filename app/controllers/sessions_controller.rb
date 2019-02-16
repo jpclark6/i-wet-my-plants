@@ -9,21 +9,23 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
-  protected
+  private
 
   def auth_hash
     request.env["omniauth.auth"]
-  end 
-  
+  end
+
   def facebook_user(auth_hash)
     user = User.find_or_create_from_auth_hash(auth_hash)
-    if user
-      flash[:success] = "Welcome #{user.name}"
+    if user.save && user.garden == nil
       session[:user_id] = user.id
-    else
-      flash[:error] = "Login failed"
+      flash[:success] = "Welcome to your garden #{user.name}.  Please add some plants."
+      redirect_to new_garden_path
+    else user.save && user.garden != nil
+      session[:user_id] = user.id
+      flash[:success] = "Welcome back #{user.name}."
+      redirect_to plants_path
     end
-    redirect_to plants_path
   end
-  
+
 end
