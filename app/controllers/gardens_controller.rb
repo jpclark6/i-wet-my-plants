@@ -4,7 +4,6 @@ class GardensController < ApplicationController
   end
 
   def create
-
     @garden = Garden.new(name: garden_params[:name],
                             twitter_handle: garden_params[:twitter_handle],
                             zip_code: garden_params[:zip_code],
