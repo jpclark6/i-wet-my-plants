@@ -15,7 +15,7 @@ describe 'as a registered user' do
 
     visit '/plants'
      # When I visit my user dashboard
-    within "plant-#{plant_1.id}" do
+    within "#plant-#{plant_1.id}" do
       expect(page).to have_button("Water Plant")
       expect(page).to have_content(0)
       click_on "Water Plant"
@@ -24,7 +24,7 @@ describe 'as a registered user' do
     # When I click on "Water plant"
     expect(current_path).to eq(plants_path)
     # I will remain on the dashboard path
-    within "plant-#{plant_1.id}" do
+    within "#plant-#{plant_1.id}" do
       expect(page).to have_content(plant_1.frequency)
     end
      # The button will reset the clock timer.

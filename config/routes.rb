@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   resources :plants
   resources :gardens, only: [:new, :create]
 
-  get '/water_plant/:id', to: 'plants#water', as: 'water_plant'
-  get '/water_plants', to: 'plants#water_all', as: 'water_all_plants'
+  patch '/water_plant/:id', to: 'plants#water', as: 'water_plant'
+  patch '/water_plants', to: 'plants#water_all', as: 'water_all_plants'
 end
