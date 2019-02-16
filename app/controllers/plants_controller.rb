@@ -34,7 +34,9 @@ class PlantsController < ApplicationController
   end
 
   def water_all
-    #add water method on plant instance
+    current_user.garden.plants.each do |plant|
+      plant.water_plant
+    end
     redirect_to plants_path
   end
 
