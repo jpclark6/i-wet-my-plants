@@ -13,7 +13,7 @@ describe 'as a registered user' do
 
     within('.menu') do
       expect(page).to have_link('Garden')
-      expect(page).to have_link('Water All Plants')
+      expect(page).to have_button('Water All Plants')
       expect(page).to have_link('Logout')
     end
     within('.garden') do
@@ -50,7 +50,7 @@ describe 'as a registered user' do
 
     within('.menu') do
       expect(page).to have_link('Garden')
-      expect(page).to have_link('Water All Plants')
+      expect(page).to have_button('Water All Plants')
       expect(page).to have_link('Logout')
     end
     within('.garden') do

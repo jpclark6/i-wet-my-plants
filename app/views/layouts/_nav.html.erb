@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><%= link_to 'Garden', plants_path %></li>
-      <li><%= link_to 'Water All Plants', water_all_plants_path %></li>
+      <li><%= button_to 'Water All Plants', water_all_plants_path, method: :patch %></li>
       <li><%= link_to 'Logout', logout_path, method: :delete %></li>
     </ul>
   </div>

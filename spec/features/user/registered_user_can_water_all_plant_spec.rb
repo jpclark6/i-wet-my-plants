@@ -14,7 +14,6 @@ describe 'as a registered user' do
     # As a registered user.
 
     visit '/plants'
-    save_and_open_page
      # When I visit my user dashboard
     click_on "Water All Plants"
     # I see a button "Water All Plants" next to each plant.
