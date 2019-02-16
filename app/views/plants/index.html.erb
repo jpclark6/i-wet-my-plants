@@ -26,7 +26,7 @@
                 <td><%= plant.species %></td>
                 <td><%= plant.hours_until_watering %></td>
                 <td><%= link_to "Edit", edit_plant_path(plant) %></td>
-                <td><%= link_to "Water Plant", water_plant_path(plant), method: :post %></td>
+                <td><%= button_to "Water Plant", water_plant_path(plant), method: :patch %></td>
               </tr>
             <% end %>
           </tbody>

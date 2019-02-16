@@ -28,13 +28,14 @@ class PlantsController < ApplicationController
   end
 
   def water
-    #add water method on plant instance
-    redirect_to garden_path
+    plant = Plant.find(params[:id])
+    plant.water_plant
+    redirect_to plants_path
   end
 
   def water_all
     #add water method on plant instance
-    redirect_to garden_path
+    redirect_to plants_path
   end
 
   private
