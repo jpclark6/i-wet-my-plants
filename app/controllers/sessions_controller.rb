@@ -13,11 +13,11 @@ class SessionsController < ApplicationController
 
   def auth_hash
     request.env["omniauth.auth"]
-  end 
-  
+  end
+
   def facebook_user(auth_hash)
     user = User.find_or_create_from_auth_hash(auth_hash)
-    if user
+    if user.save
       flash[:success] = "Welcome #{user.name}"
       session[:user_id] = user.id
     else
@@ -25,5 +25,5 @@ class SessionsController < ApplicationController
     end
     redirect_to plants_path
   end
-  
+
 end
