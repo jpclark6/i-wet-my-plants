@@ -1,0 +1,9 @@
+<%= form_for @garden do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :twitter_handle %>
+  <%= f.text_field :twitter_handle %>
+  <%= f.label :zip_code %>
+  <%= f.number_field :zip_code %>
+  <%= f.submit "Create Garden" %>
+<% end %>

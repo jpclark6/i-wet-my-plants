@@ -1,7 +1,7 @@
 describe 'as a registered user' do
   it 'creates a plant happy path' do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 84928)
+    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'asdfasdf')
     plant_1 = garden.plants.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
     plant_2 = garden.plants.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: "2019-02-09")
 
