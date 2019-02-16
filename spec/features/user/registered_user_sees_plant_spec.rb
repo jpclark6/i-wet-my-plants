@@ -89,7 +89,20 @@ describe 'as a registered user' do
     click_on 'Create Plant'
     #I should click "Create plant"
     expect(page).to have_content("species can't be blank")
-    # I see a message "Incorrect Info"
+    # As registered user.
+    visit plant_path(plant_1.id)
+    # When I visit 'pants/:id'
+    # I see the plant name, watering history, a place to leave notes.
+    expect(page).to have_content("Name: #{plant_1.name}")
+    expect(page).to have_content("Last Watered: #{plant_1.last_watered.to_date}")
+    expect(page).to_not have_content("Name: #{plant_2.name}")
+    expect(page).to_not have_content("Last Watered: #{plant_2.last_watered.to_date}")
+
+    expect(page).to have_button("Edit Plant")
+    # I see "Edit Plant"
+    expect(page).to have_button("Kill Me")
+    # and "Kill Me" buttons
+  # I see a message "Incorrect Info"
  end
  it 'can edit plant' do
    user_1 = User.create(name: "Bobby", uid: '49j8jesj')
@@ -107,17 +120,17 @@ describe 'as a registered user' do
 
    name = 'maddie'
    species = 'species 3'
-   frequency = '24'
+   frequency = '18'
 
-   fill_in 'name', with: name
-   fill_in 'species', with: species
-   fill_in 'frequency', with: frequency
+   fill_in 'plant[name]', with: name
+   fill_in 'plant[species]', with: species
+   fill_in 'plant[frequency]', with: frequency
 
    click_on 'Update'
 
    expect(current_path).to eq(plants_path)
    expect(plant_1.name).to eq('maddie')
    expect(plant_1.species).to eq('species 3')
-   expect(plant_1.frequency).to eq('24')
+   expect(plant_1.frequency).to eq('18')
  end
 end
