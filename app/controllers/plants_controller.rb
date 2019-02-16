@@ -1,7 +1,6 @@
 class PlantsController < ApplicationController
   def index
-    #garden index page
-    @plants = current_garden.plants if current_garden
+      @plants = current_user.garden.plants
   end
 
   def new
