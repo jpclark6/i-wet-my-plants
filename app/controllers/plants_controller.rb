@@ -30,7 +30,7 @@ class PlantsController < ApplicationController
 
   def water
     plant = Plant.find(params[:id])
-    plant.update!(last_watered: Time.now)
+    plant.water_plant
     redirect_to plants_path
   end
 
