@@ -16,7 +16,7 @@ describe 'As a first time visitor to the site who signs in' do
 
     fill_in :garden_zip_code, with: zip_code
     click_on 'Create Garden'
-save_and_open_page
+
     expect(current_path).to eq('/plants')
     expect(page).to have_content(name)
   end
