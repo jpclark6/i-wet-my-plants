@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_02_15_194612) do
     t.string "name"
     t.string "species"
     t.integer "frequency"
-    t.datetime "last_watered", default: "2019-02-17 19:05:20"
+    t.datetime "last_watered", default: "2019-02-17 20:06:00"
     t.bigint "garden_id"
     t.index ["garden_id"], name: "index_plants_on_garden_id"
   end

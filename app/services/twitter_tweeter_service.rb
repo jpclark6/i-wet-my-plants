@@ -10,11 +10,15 @@ class TwitterTweeterService
 
   def send_tweets
     Plant.plants_that_need_watering.each do |plant|
-      tweet.update("#{} #{random_message(plant).sample}")
+      message = "@#{plant.garden.twitter_handle} #{random_message(plant).sample}"
+      tweet.update(message)
     end
+    "Success"
   end
 
   def random_message(plant)
-    []
+    ["Hey it's #{plant.name}, your #{plant.species}, please water me!",
+    "...it's #{plant.name}, your #{plant.species}...need...water...",
+    "I could sure use some water! Love, your #{plant.species}, #{plant.name}"]
   end
 end
