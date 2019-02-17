@@ -9,8 +9,12 @@ class TwitterTweeterService
   end
 
   def send_tweets
-    tweeter = tweet
-    binding.pry
-    Plant.select("plants.*").where("EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) > (frequency - 6) * 3600")
+    Plant.plants_that_need_watering.each do |plant|
+      tweet.update("#{} #{random_message(plant).sample}")
+    end
+  end
+
+  def random_message(plant)
+    []
   end
 end
