@@ -1,7 +1,6 @@
 class PlantsController < ApplicationController
   def index
-    #garden index page
-    @plants = current_garden.plants if current_garden
+      @plants = current_user.garden.plants
   end
 
   def new
@@ -21,26 +20,58 @@ class PlantsController < ApplicationController
   end
 
   def show
-    @plant = Plant.find(params[:id])
+    @user = current_user
+    @garden = @user.garden
+    @plant = @garden.plants.find(params[:id])
   end
 
   def edit
-    #plant edit page
+    @user = current_user
+    @garden = @user.garden
+    @plant = @garden.plants.find(params[:id])
+  end
+
+  def update
+    @user = current_user
+    @garden = @user.garden
+    @plant = @garden.plants.find(params[:id])
+    if @plant.update(plant_params)
+      flash[:success]= "Your plant is updated"
+      redirect_to plants_path
+    else
+      @errors = @plant.errors
+      render :new
+    end
+  end
+  
+  def destroy
+    @user = current_user
+    @garden = @user.garden
+    @plant = @garden.plants.find(params[:id])
+    if @plant.destroy
+      flash[:success]= "Your plant has been murdered"
+      redirect_to plants_path
+    else
+      falsh[:error]= "Your plant could not be deleted"
+    end
   end
 
   def water
-    #add water method on plant instance
-    redirect_to garden_path
+    plant = Plant.find(params[:id])
+    plant.water_plant
+    redirect_to plants_path
   end
 
   def water_all
-    #add water method on plant instance
-    redirect_to garden_path
+    current_user.garden.plants.each do |plant|
+      plant.water_plant
+    end
+    redirect_to plants_path
   end
 
   private
 
   def plant_params
-  params.permit(:name, :species, :frequency)
+    params.require(:plant).permit(:name, :species, :frequency)
   end
 end

@@ -1,20 +1,21 @@
 <%= render "layouts/nav" %>
 <div class='garden-body'>
   <div class='main-heading'>
-    <h1 class='garden-header'>My Gardens</h1>
+    <h1 class='garden-header'>Garden Name: <%= current_user.garden.name %></h1>
+  </div>
+  <div class="add_plant">
+    <%= link_to "Add Plant", new_plant_path, class: 'btn btn-outline-primary btn-lg' %>
   </div>
 
-  <% if current_garden %>
-    <div class='garden'>
-      <h2><%= current_user.garden.name %></h2>
-      <%= link_to "Add Plant", new_plant_path, class: 'btn btn-outline-primary btn-md' %>
-      <div class="container">
+  <% if current_user.garden.plants.count > 0 %>
+  <div class='garden'>
+    <div class="container">
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Species</th>
-              <th>Hours Until Watering</th>
+              <th>Plant Name:</th>
+              <th>Species:</th>
+              <th>Hours Until Watering:</th>
               <th></th>
               <th></th>
             </tr>
@@ -22,18 +23,18 @@
           <tbody>
             <% @plants.each do |plant| %>
               <tr class='plant' id='plant-<%= plant.id %>'>
-                <td><%= link_to plant.name, plant_path(plant) %></td>
+                <td><%= link_to(plant.name, plant_path(plant), :class => "name") %></td>
                 <td><%= plant.species %></td>
                 <td><%= plant.hours_until_watering %></td>
                 <td><%= link_to "Edit", edit_plant_path(plant) %></td>
-                <td><%= link_to "Water Plant", water_plant_path(plant), method: :post %></td>
+                <td><%= button_to(water_plant_path(plant), method: :patch) do %>
+                  <i class="fas fa-tint"></i>
+                <% end %></td>
               </tr>
             <% end %>
           </tbody>
         </table>
-      </div>
+      <% end %>
     </div>
-  <% else %>
-    <%= link_to "Add Garden", new_garden_path %>
-  <% end %>
+  </div>
 </div>

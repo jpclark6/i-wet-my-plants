@@ -1,5 +1,5 @@
 user_1 = User.create!(name: "Bobby",  uid: '3297328fha')
-garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928)
+garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'asdfasdfasd')
 Plant.create!(name: 'Alice', species: 'Rose', frequency: 12, garden: garden, last_watered: Time.now)
 Plant.create!(name: 'Tom', species: 'Carrot', frequency: 5, garden: garden, last_watered: Time.now)
 Plant.create!(name: 'Elbert', species: 'Beet', frequency: 4, garden: garden, last_watered: Time.now)

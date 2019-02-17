@@ -1,0 +1,48 @@
+.garden-body {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+.garden-header {
+  font-size: 330%;
+  text-shadow: 1px 1px 5px #000;
+}
+.add_plant {
+  padding: 20px;
+  .btn {
+    border: 1px solid black;
+  }
+}
+.garden {
+  padding-top: 20px;
+  background-color: rgba(255,255,255,0.6);
+  border: 1px solid white;
+  border-radius: 20px;
+
+  th {
+    font-size: 155%;
+    color: #1c64a8;
+    font-weight: bold;
+  }
+  table {
+    font-size: 150%;
+    color: #1c64a8;
+  }
+  .name {
+    text-decoration: underline;
+    color: #FE5F55;
+  }
+  .name:hover {
+    color: #1c64a8;
+  }
+  td {
+    color: #FE5F55;
+  }
+  i {
+    color: #1871c2;
+    font-size: 40px;
+  }
+  i:hover {
+    color: #FE5F55;
+  }
+}
