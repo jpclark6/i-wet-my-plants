@@ -8,8 +8,8 @@ class TwitterTweeterService
     end
   end
 
-  def send_tweet(tweet)
-    tweet.update(tweet)
+  def send_tweet(message)
+    tweet.update(message)
   end
 
   def send_tweets
