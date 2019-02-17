@@ -2,6 +2,6 @@
 
 <ul>
   <li><%= "Last Watered: #{@plant.last_watered.to_date}" %> </li>
-  <li><%= button_to  "Edit Plant"%></li>
-  <li><%= button_to  "Kill Me"%></li>
+  <li><%= link_to "Edit Plant", edit_plant_path(@plant) %></li>
+  <li><%= link_to  "Kill Me"%></li>
 </ul>

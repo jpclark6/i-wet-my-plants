@@ -15,8 +15,8 @@ describe 'as a registered user' do
     expect(page).to_not have_content("Name: #{plant_2.name}")
     expect(page).to_not have_content("Last Watered: #{plant_2.last_watered.to_date}")
 
-    expect(page).to have_button("Edit Plant")
-    expect(page).to have_button("Kill Me")
+    expect(page).to have_link("Edit Plant")
+    expect(page).to have_link("Kill Me")
   end
   it 'create a plant happy path' do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
@@ -45,7 +45,7 @@ describe 'as a registered user' do
     fill_in 'species', with: species
     fill_in 'frequency', with: frequency
     click_on 'Create Plant'
-    
+
     plant_id = Plant.all.last.id
     expect(current_path).to eq(plants_path(plant_id))
     expect(page).to have_content("Your plant was added")
@@ -139,5 +139,36 @@ describe 'as a registered user' do
    click_on 'Update Plant'
 
    expect(page).to have_content("frequency can't be blank")
+ end
+ it 'can edit plant from plant show page' do
+   user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
+   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'Maddie')
+   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
+   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+   visit plant_path(plant_1)
+
+   expect(page).to have_link('Edit Plant')
+
+   click_on 'Edit Plant'
+
+   expect(current_path).to eq(edit_plant_path(plant_1))
+
+   name = 'maddie'
+   species = 'species 3'
+   frequency = '18'
+
+   fill_in 'plant[name]', with: name
+   fill_in 'plant[species]', with: species
+   fill_in 'plant[frequency]', with: frequency
+
+   click_on 'Update Plant'
+
+   plant_1.update(name: name, species: species, frequency: frequency)
+
+   expect(current_path).to eq(plants_path)
+   expect(plant_1.name).to eq('maddie')
+   expect(plant_1.species).to eq('species 3')
+   expect(plant_1.frequency).to eq(18)
  end
 end
