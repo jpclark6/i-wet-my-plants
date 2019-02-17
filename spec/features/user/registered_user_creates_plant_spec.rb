@@ -16,10 +16,10 @@ describe 'as a registered user' do
       expect(page).to have_button('Water All Plants')
       expect(page).to have_link('Logout')
     end
-    within('.garden') do
+
     expect(page).to have_link('Add Plant')
+
     click_on 'Add Plant'
-    end
 
     name = 'dave'
     species = 'species 1'
@@ -30,10 +30,9 @@ describe 'as a registered user' do
     fill_in :plant_frequency, with: frequency
 
     click_on 'Create Plant'
-#save_and_open_page
+
     plant_id = Plant.all.last.id
     expect(current_path).to eq(plants_path(plant_id))
-
     expect(page).to have_content("Your plant was added")
   end
 
@@ -53,10 +52,10 @@ describe 'as a registered user' do
       expect(page).to have_button('Water All Plants')
       expect(page).to have_link('Logout')
     end
-    within('.garden') do
+
     expect(page).to have_link('Add Plant')
+    
     click_on 'Add Plant'
-    end
 
     name = 'dave'
     frequency = '5'
