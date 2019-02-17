@@ -32,4 +32,14 @@ describe Plant do
       expect(plant_1.hours_until_watering).to eq(plant_1.frequency)
     end
   end
+  describe 'class methods' do
+    it '#plants_that_need_watering' do
+      user_1 = User.create!(name: "Bobby",  uid: '3297328fha')
+      garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'jpclark63')
+      plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 12, garden: garden, last_watered: Time.now)
+      plant_2 = Plant.create!(name: 'Tom', species: 'Carrot', frequency: 5, garden: garden, last_watered: Time.now)
+      plant_3 = Plant.create!(name: 'Elbert', species: 'Beet', frequency: 4, garden: garden, last_watered: Time.now)
+      expect(Plant.plants_that_need_watering).to eq([plant_3, plant_2])
+    end
+  end
 end
