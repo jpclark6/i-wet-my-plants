@@ -29,7 +29,7 @@ describe 'as a registered user' do
     fill_in :plant_species, with: species
     fill_in :plant_frequency, with: frequency
 
-    click_on 'Create Plant'
+    click_on 'Add Plant'
 
     plant_id = Plant.all.last.id
     expect(current_path).to eq(plants_path(plant_id))
@@ -54,7 +54,7 @@ describe 'as a registered user' do
     end
 
     expect(page).to have_link('Add Plant')
-    
+
     click_on 'Add Plant'
 
     name = 'dave'
@@ -63,7 +63,7 @@ describe 'as a registered user' do
    fill_in :plant_name, with: name
    fill_in :plant_frequency, with: frequency
 
-   click_on 'Create Plant'
+   click_on 'Add Plant'
 
    expect(page).to have_content("species can't be blank")
  end

@@ -15,18 +15,18 @@
     <% end %>
     <div class="form-group">
       <h5><%= f.label :name, "Plant Name:" %></h5>
-      <%= f.text_field :name, placeholder: "Tom'satos", class: 'form-control' %>
+      <%= f.text_field :name, placeholder: "(Please enter plant name)", class: 'form-control' %>
     </div>
     <div class="form-group">
       <h5><%= f.label :species, "Plant Species:" %></h5>
-      <%= f.text_field :species, placeholder: "Big Red", class: 'form-control' %>
+      <%= f.text_field :species, placeholder: "(Please enter plant species)", class: 'form-control' %>
     </div>
     <div class="form-group">
       <h5><%= f.label :frequency, "Frequency Plant Needs Watered:" %></h5>
-      <%= f.number_field :frequency, placeholder: "24 (Please enter number in hours)", class: 'form-control' %>
+      <%= f.number_field :frequency, placeholder: "(Please enter number in hours)", class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.submit "Create Plant", class: "btn btn-outline-primary btn-lg" %>
+      <%= f.submit "Add Plant", class: "btn btn-outline-primary btn-lg" %>
     </div>
   <% end %>
 </div>
