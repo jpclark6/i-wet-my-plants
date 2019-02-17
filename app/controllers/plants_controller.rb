@@ -37,9 +37,9 @@ class PlantsController < ApplicationController
       flash[:success]= "Your plant is updated"
       redirect_to plants_path
     else
-      flash[:error]= "Your plant did not update"
+      @errors = @plant.errors
       render :new
-    end 
+    end
   end
 
   def water
