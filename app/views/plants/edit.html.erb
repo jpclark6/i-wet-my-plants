@@ -1,0 +1,9 @@
+<%= form_for [@garden, @plant], url: plant_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :species %>
+  <%= f.text_field :species %>
+  <%= f.label :frequency %>
+  <%= f.text_area :frequency %>
+  <%= f.submit %>
+<% end %>

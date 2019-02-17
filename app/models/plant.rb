@@ -1,5 +1,5 @@
 class Plant < ApplicationRecord
-  validates_presence_of :species, :frequency
+  validates_presence_of :name, :species, :frequency
   belongs_to :garden
 
   def hours_since_watered
