@@ -13,8 +13,8 @@ class GardensController < ApplicationController
       redirect_to plants_path
       flash[:success] = "Your garden has been created."
     else
+      @errors = @plant.errors
       render :new
-      flash[:error] = "ERROR: Your garden has not been created."
     end
   end
 
