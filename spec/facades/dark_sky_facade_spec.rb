@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 describe 'Dark Sky Facade' do
-  it 'can find daily percipitation' do
-    lat_lon = "37.8267,-122.4233"
-    forecast = DarkSkyFacade.raining?(lat_lon)
+  xit 'can find daily percipitation' do
+    #this test depends on currently raining and so it is not a good test
+    zip_code = "80026"
+    forecast = DarkSkyFacade.raining?(zip_code)
 
     expect(forecast).to eq(true)
   end
