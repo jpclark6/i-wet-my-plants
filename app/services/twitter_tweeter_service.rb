@@ -7,4 +7,10 @@ class TwitterTweeterService
       config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
     end
   end
+
+  def send_tweets
+    tweeter = tweet
+    binding.pry
+    Plant.select("plants.*").where("EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) > (frequency - 6) * 3600")
+  end
 end
