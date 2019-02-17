@@ -16,6 +16,7 @@ describe 'as a registered user' do
     expect(page).to_not have_content("Last Watered: #{plant_2.last_watered.to_date}")
 
     expect(page).to have_link("Edit Plant")
+    save_and_open_page
     expect(page).to have_link("Kill Me")
   end
   it 'create a plant happy path' do

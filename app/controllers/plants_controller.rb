@@ -20,7 +20,9 @@ class PlantsController < ApplicationController
   end
 
   def show
-    @plant = Plant.find(params[:id])
+    @user = current_user
+    @garden = @user.garden
+    @plant = @garden.plants.find(params[:id])
   end
 
   def edit
