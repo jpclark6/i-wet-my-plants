@@ -3,5 +3,5 @@
 <ul>
   <li><%= "Last Watered: #{@plant.last_watered.to_date}" %> </li>
   <li><%= link_to "Edit Plant", edit_plant_path(@plant) %></li>
-  <li><%= link_to  "Kill Me"%></li>
+  <li><%= link_to  "Kill Me", plant_path(@plant), method: :delete%></li>
 </ul>

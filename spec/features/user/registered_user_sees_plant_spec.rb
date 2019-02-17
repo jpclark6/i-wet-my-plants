@@ -16,7 +16,6 @@ describe 'as a registered user' do
     expect(page).to_not have_content("Last Watered: #{plant_2.last_watered.to_date}")
 
     expect(page).to have_link("Edit Plant")
-    save_and_open_page
     expect(page).to have_link("Kill Me")
   end
   it 'create a plant happy path' do
@@ -171,5 +170,23 @@ describe 'as a registered user' do
    expect(plant_1.name).to eq('maddie')
    expect(plant_1.species).to eq('species 3')
    expect(plant_1.frequency).to eq(18)
+ end
+ it 'can delete plant' do
+   user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
+   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'Maddie')
+   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
+   plant_2 = garden.plants.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: "2019-02-09", garden: garden)
+
+   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+   visit plant_path(plant_1)
+
+   click_on "Kill Me"
+
+   expect(current_path).to eq(plants_path)
+   expect(page).to have_content("Your plant has been murdered")
+   expect(page).to_not have_content(plant_1.name)
+   expect(page).to_not have_content(plant_1.species)
+   expect(page).to have_content(plant_2.name)
  end
 end

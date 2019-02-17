@@ -43,6 +43,18 @@ class PlantsController < ApplicationController
       render :new
     end
   end
+  
+  def destroy
+    @user = current_user
+    @garden = @user.garden
+    @plant = @garden.plants.find(params[:id])
+    if @plant.destroy
+      flash[:success]= "Your plant has been murdered"
+      redirect_to plants_path
+    else
+      falsh[:error]= "Your plant could not be deleted"
+    end
+  end
 
   def water
     plant = Plant.find(params[:id])
