@@ -4,9 +4,9 @@
   <h1 class="plant"><%= "Plant Name: #{@plant.name }"%></h1>
     <h4><%= "Last Watered: #{@plant.last_watered.to_date}" %> </h4>
     <div class="button-group">
-    <%= button_to "Edit Plant",plant_path , class: 'btn btn-outline-primary btn-lg' %>
+    <%= link_to "Edit Plant", edit_plant_path(@plant) , class: 'btn btn-outline-primary btn-lg' %>
     </div>
     <div class="button-group">
-    <%= button_to "Kill Me",plant_path , class: 'btn btn-outline-primary btn-lg' %>
+    <%= link_to "Kill Me", plant_path(@plant), method: :delete , class: 'btn btn-outline-primary btn-lg' %>
     </div>
 </div>
