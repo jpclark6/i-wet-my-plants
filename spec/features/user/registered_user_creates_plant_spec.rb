@@ -25,12 +25,12 @@ describe 'as a registered user' do
     species = 'species 1'
     frequency = '5'
 
-    fill_in 'name', with: name
-    fill_in 'species', with: species
-    fill_in 'frequency', with: frequency
+    fill_in :plant_name, with: name
+    fill_in :plant_species, with: species
+    fill_in :plant_frequency, with: frequency
 
     click_on 'Create Plant'
-
+#save_and_open_page
     plant_id = Plant.all.last.id
     expect(current_path).to eq(plants_path(plant_id))
 
@@ -61,8 +61,8 @@ describe 'as a registered user' do
     name = 'dave'
     frequency = '5'
 
-   fill_in 'name', with: name
-   fill_in 'frequency', with: frequency
+   fill_in :plant_name, with: name
+   fill_in :plant_frequency, with: frequency
 
    click_on 'Create Plant'
 
