@@ -1,9 +1,31 @@
-<%= form_for @garden do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :twitter_handle %>
-  <%= f.text_field :twitter_handle %>
-  <%= f.label :zip_code %>
-  <%= f.number_field :zip_code %>
-  <%= f.submit "Create Garden" %>
-<% end %>
+<div class="form_container">
+  <div class="form-group">
+    <h4>CELERYbrate your new account by creating your garden below:</h4>
+  </div>
+  <%= form_for @garden do |f| %>
+    <% if @errors %>
+      <div class="flash">
+        <% @errors.messages.each do |message| %>
+          <div class="alert alert-danger">
+          <h6><%= "#{message[0].to_s} " "#{message[1].pop}" %></h6>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <h5><%= f.label :name, "Garden Name:" %></h5>
+      <%= f.text_field :name, placeholder: "Tom's GRAPEst Garden", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <h5><%= f.label :twitter_handle, "Your Twitter Handle:" %></h5>
+      <%= f.text_field :twitter_handle, placeholder: "@life_is_PEACHY_19", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <h5><%= f.label :zip_code, "Your Zip Code:" %></h5>
+      <%= f.number_field :zip_code, placeholder: "80203", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Create Garden", class: 'btn btn-outline-primary btn-lg' %>
+    </div>
+  <% end %>
+</div>
