@@ -1,15 +1,15 @@
 <%= render "layouts/nav" %>
 <div class='garden-body'>
   <div class='main-heading'>
-    <h1 class='garden-header'><%= current_user.garden.name %></h1>
+    <h1 class='garden-header'>Garden Name: <%= current_user.garden.name %></h1>
   </div>
   <div class="add_plant">
     <%= link_to "Add Plant", new_plant_path, class: 'btn btn-outline-primary btn-lg' %>
   </div>
 
+  <% if current_user.garden.plants.count > 0 %>
   <div class='garden'>
     <div class="container">
-      <% if current_user.garden.plants.count > 0 %>
         <table class="table table-hover">
           <thead>
             <tr>

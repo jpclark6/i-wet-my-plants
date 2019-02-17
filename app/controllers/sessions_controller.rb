@@ -19,7 +19,6 @@ class SessionsController < ApplicationController
     user = User.find_or_create_from_auth_hash(auth_hash)
     if user.save && user.garden == nil
       session[:user_id] = user.id
-      flash[:success] = "Welcome to your garden #{user.name}.  Please add some plants."
       redirect_to new_garden_path
     else user.save && user.garden != nil
       session[:user_id] = user.id
