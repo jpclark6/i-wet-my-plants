@@ -4,7 +4,7 @@
     <h1 class='garden-header'><%= current_user.garden.name %></h1>
   </div>
   <div class="add_plant">
-    <%= link_to "Add Plant", new_plant_path, class: 'btn btn-outline-primary btn-md' %>
+    <%= link_to "Add Plant", new_plant_path, class: 'btn btn-outline-primary btn-lg' %>
   </div>
 
   <div class='garden'>
@@ -23,7 +23,7 @@
           <tbody>
             <% @plants.each do |plant| %>
               <tr class='plant' id='plant-<%= plant.id %>'>
-                <td><%= link_to plant.name, plant_path(plant) %></td>
+                <td><%= link_to(plant.name, plant_path(plant), :class => "name") %></td>
                 <td><%= plant.species %></td>
                 <td><%= plant.hours_until_watering %></td>
                 <td><%= link_to "Edit", edit_plant_path(plant) %></td>
