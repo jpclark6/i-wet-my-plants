@@ -8,12 +8,19 @@ class TwitterTweeterService
     end
   end
 
+  def send_tweet(tweet)
+    tweet.update(message)
+  end
+
   def send_tweets
     Plant.plants_that_need_watering.each do |plant|
-      message = "@#{plant.garden.twitter_handle} #{random_message(plant).sample}"
-      tweet.update(message)
+      send_tweet(create_message(plant))
     end
     "Success"
+  end
+
+  def create_message(plant)
+    "@#{plant.garden.twitter_handle} #{random_message(plant).sample}"
   end
 
   def random_message(plant)
