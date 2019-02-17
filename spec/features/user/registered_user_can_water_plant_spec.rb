@@ -11,26 +11,22 @@ describe 'as a registered user' do
     garden.plants << plant_3 = Plant.create(name: 'Elbert', species: 'Beet', frequency: 18, last_watered: two_days_ago)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
-    # As a registered user.
 
     visit '/plants'
 
-     # When I visit my user dashboard
     within "#plant-#{plant_1.id}" do
-      expect(page).to have_button("Water Plant")
       expect(page).to have_content("0")
-      click_on "Water Plant"
+      expect(page).to have_button()
+      click_button
     end
-    # I see a button "Water plant" next to each plant.
-    # When I click on "Water plant"
+
     expect(current_path).to eq(plants_path)
-    # I will remain on the dashboard path
+
     within "#plant-#{plant_1.id}" do
       plant = Plant.find(plant_1.id)
       expect(plant.hours_until_watering).to eq(24)
       expect(plant.hours_since_watered).to eq(0)
       expect(page).to have_content(plant_1.hours_until_watering)
     end
-     # The button will reset the clock timer.
   end
 end

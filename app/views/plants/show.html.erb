@@ -1,7 +1,12 @@
-<h1><%= "Name: #{@plant.name }"%></h1>
+<%= render "layouts/nav" %>
 
-<ul>
-  <li><%= "Last Watered: #{@plant.last_watered.to_date}" %> </li>
-  <li><%= link_to "Edit Plant", edit_plant_path(@plant) %></li>
-  <li><%= link_to  "Kill Me", plant_path(@plant), method: :delete%></li>
-</ul>
+<div class="plant_container">
+  <h1 class="plant"><%= "Plant Name: #{@plant.name }"%></h1>
+    <h4><%= "Last Watered: #{@plant.last_watered.to_date}" %> </h4>
+    <div class="button-group">
+    <%= link_to "Edit Plant", edit_plant_path(@plant) , class: 'btn btn-outline-primary btn-lg' %>
+    </div>
+    <div class="button-group">
+    <%= link_to "Kill Me", plant_path(@plant), method: :delete , class: 'btn btn-outline-primary btn-lg' %>
+    </div>
+</div>

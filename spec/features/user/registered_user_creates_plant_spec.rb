@@ -16,24 +16,23 @@ describe 'as a registered user' do
       expect(page).to have_button('Water All Plants')
       expect(page).to have_link('Logout')
     end
-    within('.garden') do
+
     expect(page).to have_link('Add Plant')
+
     click_on 'Add Plant'
-    end
 
     name = 'dave'
     species = 'species 1'
     frequency = '5'
 
-    fill_in 'name', with: name
-    fill_in 'species', with: species
-    fill_in 'frequency', with: frequency
+    fill_in :plant_name, with: name
+    fill_in :plant_species, with: species
+    fill_in :plant_frequency, with: frequency
 
-    click_on 'Create Plant'
+    click_on 'Add Plant'
 
     plant_id = Plant.all.last.id
     expect(current_path).to eq(plants_path(plant_id))
-
     expect(page).to have_content("Your plant was added")
   end
 
@@ -53,18 +52,18 @@ describe 'as a registered user' do
       expect(page).to have_button('Water All Plants')
       expect(page).to have_link('Logout')
     end
-    within('.garden') do
+
     expect(page).to have_link('Add Plant')
+
     click_on 'Add Plant'
-    end
 
     name = 'dave'
     frequency = '5'
 
-   fill_in 'name', with: name
-   fill_in 'frequency', with: frequency
+   fill_in :plant_name, with: name
+   fill_in :plant_frequency, with: frequency
 
-   click_on 'Create Plant'
+   click_on 'Add Plant'
 
    expect(page).to have_content("species can't be blank")
  end

@@ -35,7 +35,7 @@ class PlantsController < ApplicationController
     @user = current_user
     @garden = @user.garden
     @plant = @garden.plants.find(params[:id])
-    if @plant.update(update_params)
+    if @plant.update(plant_params)
       flash[:success]= "Your plant is updated"
       redirect_to plants_path
     else
@@ -72,10 +72,6 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-   params.permit(:name, :species, :frequency)
-  end
-
-  def update_params
     params.require(:plant).permit(:name, :species, :frequency)
   end
 end
