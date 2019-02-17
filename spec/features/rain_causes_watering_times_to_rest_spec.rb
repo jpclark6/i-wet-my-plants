@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'as a resgistered user on the garden' do
   xit 'changes watering times if raining' do
-    user_1 = User.create(name: "Bobby", zip_code: 84928)
+    user_1 = User.create(name: "Bobby", zip_code: 80026)
     user_1.gardens << Garden.create(name: 'Backyard')
     user_1.gardens.first.plants << plant_1 = Plant.new(name: 'Alice',
                                                         species: 'Rose',

@@ -3,7 +3,7 @@ require "rails_helper"
 describe 'as a registered user' do
   it 'sees a plant happy path' do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'asdfasdf')
+    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
     plant_1 = garden.plants.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
     plant_2 = garden.plants.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: "2019-02-09")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
@@ -20,7 +20,7 @@ describe 'as a registered user' do
   end
   it 'create a plant happy path' do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'asdfasdf')
+    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
     plant_1 = garden.plants.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
     plant_2 = garden.plants.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: "2019-02-09")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
@@ -52,7 +52,7 @@ describe 'as a registered user' do
   end
   it 'it cannot create a plant with bad info' do
     user_1 = User.create(name: "Bobby", uid: '49j8jesj')
-    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: "Maddie")
+    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: "Maddie")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit '/plants'
@@ -72,7 +72,7 @@ describe 'as a registered user' do
  end
  it 'can edit plant' do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'Maddie')
+   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
@@ -103,7 +103,7 @@ describe 'as a registered user' do
  end
  it 'cannot edit plant with missing species plant' do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'Maddie')
+   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
@@ -123,7 +123,7 @@ describe 'as a registered user' do
 
  it 'cannot edit plant with missing frequency plant' do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'Maddie')
+   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
@@ -142,7 +142,7 @@ describe 'as a registered user' do
  end
  it 'can edit plant from plant show page' do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'Maddie')
+   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
@@ -173,7 +173,7 @@ describe 'as a registered user' do
  end
  it 'can delete plant' do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 84928, twitter_handle: 'Maddie')
+   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
    plant_2 = garden.plants.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: "2019-02-09", garden: garden)
 

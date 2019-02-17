@@ -1,6 +1,8 @@
 class PlantsController < ApplicationController
   def index
-      @plants = current_user.garden.plants
+    @plants = current_user.garden.plants
+    @zip_code = current_user.garden.zip_code
+    @current_forecast = DarkSkyFacade.current_forecast(@zip_code)
   end
 
   def new
@@ -43,7 +45,7 @@ class PlantsController < ApplicationController
       render :new
     end
   end
-  
+
   def destroy
     @user = current_user
     @garden = @user.garden

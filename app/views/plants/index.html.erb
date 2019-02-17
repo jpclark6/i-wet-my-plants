@@ -1,5 +1,8 @@
 <%= render "layouts/nav" %>
 <div class='garden-body'>
+  <div class="current-weather">
+    <%= @current_forecast %>
+  </div>
   <div class='main-heading'>
     <h1 class='garden-header'>Garden Name: <%= current_user.garden.name %></h1>
   </div>

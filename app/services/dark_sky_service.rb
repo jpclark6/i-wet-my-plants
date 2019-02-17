@@ -17,5 +17,4 @@ class DarkSkyService
     response = conn.get "/forecast/#{key}/#{lat},#{lng}"
     JSON.parse(response.body, symbolize_names: true)
   end
-
 end
