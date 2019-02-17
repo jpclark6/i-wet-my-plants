@@ -9,7 +9,7 @@ class TwitterTweeterService
   end
 
   def send_tweet(tweet)
-    tweet.update(message)
+    tweet.update(tweet)
   end
 
   def send_tweets
