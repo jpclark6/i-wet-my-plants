@@ -1,8 +1,8 @@
 <%= render "layouts/nav" %>
 <div class='garden-body'>
   <div class="current-weather">
-    <h4>Current Weather: </h4>
-    <%= image_tag("#{@current_forecast}.gif", :alt => "#{@current_forecast}") %>
+    <h5>Current Weather: </h5>
+    <%= image_tag("#{@current_forecast}.gif", :alt => "#{@current_forecast}", :height => "70", :style => "border-radius: 10%;") %>
   </div>
   <div class='main-heading'>
     <h1 class='garden-header'>Garden Name: <%= current_user.garden.name %></h1>
@@ -18,8 +18,9 @@
           <thead>
             <tr>
               <th>Plant Name:</th>
-              <th>Species:</th>
+              <th>Plant Species:</th>
               <th>Hours Until Watering:</th>
+              <th>Water Plants:</th>
               <th></th>
               <th></th>
             </tr>
@@ -30,7 +31,6 @@
                 <td><%= link_to(plant.name, plant_path(plant), :class => "name") %></td>
                 <td><%= plant.species %></td>
                 <td><%= plant.hours_until_watering %></td>
-                <td><%= link_to "Edit", edit_plant_path(plant) %></td>
                 <td><%= button_to(water_plant_path(plant), method: :patch) do %>
                   <i class="fas fa-tint"></i>
                 <% end %></td>
@@ -40,12 +40,5 @@
         </table>
       <% end %>
     </div>
-  </div>
-  <div class='tweet-option'>
-    <% if current_user.garden.tweet %>
-      <%= link_to 'Turn Tweets Off', stop_tweets_path, method: :patch %></td>
-    <% else %>
-      <%= link_to 'Turn Tweets On', start_tweets_path, method: :patch %>
-    <% end %>
   </div>
 </div>
