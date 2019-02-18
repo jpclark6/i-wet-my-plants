@@ -38,6 +38,12 @@ describe 'as a registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     visit '/plants'
 
-    
+    click_on 'Turn Tweets Off'
+    expect(current_path).to eq(plants_path)
+    expect(page).to have_content('Tweets have been turned off')
+
+    click_on 'Turn Tweets On'
+    expect(current_path).to eq(plants_path)
+    expect(page).to have_content('Tweets have been turned on')
   end
 end
