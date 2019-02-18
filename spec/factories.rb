@@ -1,13 +1,12 @@
 FactoryBot.define do
   factory :user do
     sequence(:name) { |n| "Lisa#{n}"}
-    oauth_token { Faker::String.random(10) }
-    uid { Faker::Number.number(8) }
+    sequence(:uid) { |n| "#{n}9j8jesj" }
   end
   factory :garden do
     association :user
     sequence(:name) { |n| "Garden#{n}"}
-    zip_code { Faker::Address.zip_code }
+    zip_code { '80026' }
     twitter_handle { Faker::Twitter.screen_name }
     tweet { true }
   end
