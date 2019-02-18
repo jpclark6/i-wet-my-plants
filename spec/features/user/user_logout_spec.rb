@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'as a registered user' do
-  it 'can log me out' do
+  it 'can log me out', :vcr do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
     garden.plants << plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)

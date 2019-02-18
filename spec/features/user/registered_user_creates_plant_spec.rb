@@ -1,6 +1,6 @@
 require "rails_helper"
 describe 'as a registered user' do
-  it 'creates a plant happy path' do
+  it 'creates a plant happy path', :vcr do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
     garden.plants << plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
@@ -36,7 +36,7 @@ describe 'as a registered user' do
     expect(page).to have_content("Your plant was added")
   end
 
-  it 'it cannot create a plant with bad info' do
+  it 'it cannot create a plant with bad info', :vcr do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
     garden.plants << plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)

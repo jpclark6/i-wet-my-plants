@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe 'as a registered user' do
-  it 'can water all plants plant' do
+  it 'can water all plants plant', :vcr do
     yesterday = 1.day.ago
     two_days_ago = 2.days.ago
     user_1 = User.create(name: "Bobby", uid: '49j8jesj')

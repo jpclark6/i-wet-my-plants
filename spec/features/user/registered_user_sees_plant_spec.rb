@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe 'as a registered user' do
-  it 'sees a plant happy path' do
+  it 'sees a plant happy path', :vcr do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
     plant_1 = garden.plants.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
@@ -18,7 +18,7 @@ describe 'as a registered user' do
     expect(page).to have_link("Edit Plant")
     expect(page).to have_link("Kill Me")
   end
-  it 'create a plant happy path' do
+  it 'create a plant happy path', :vcr do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
     plant_1 = garden.plants.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
@@ -50,7 +50,7 @@ describe 'as a registered user' do
     expect(current_path).to eq(plants_path(plant_id))
     expect(page).to have_content("Your plant was added")
   end
-  it 'it cannot create a plant with bad info' do
+  it 'it cannot create a plant with bad info', :vcr do
     user_1 = User.create(name: "Bobby", uid: '49j8jesj')
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: "Maddie")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
@@ -72,7 +72,7 @@ describe 'as a registered user' do
 
     expect(page).to have_content("species can't be blank")
  end
- it 'can edit plant' do
+ it 'can edit plant', :vcr do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
    garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
@@ -103,7 +103,7 @@ describe 'as a registered user' do
    expect(plant_1.species).to eq('species 3')
    expect(plant_1.frequency).to eq(18)
  end
- it 'cannot edit plant with missing species plant' do
+ it 'cannot edit plant with missing species plant', :vcr do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
    garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
@@ -123,7 +123,7 @@ describe 'as a registered user' do
    expect(page).to have_content("species can't be blank")
  end
 
- it 'cannot edit plant with missing frequency plant' do
+ it 'cannot edit plant with missing frequency plant', :vcr do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
    garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
@@ -142,7 +142,7 @@ describe 'as a registered user' do
 
    expect(page).to have_content("frequency can't be blank")
  end
- it 'can edit plant from plant show page' do
+ it 'can edit plant from plant show page', :vcr do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
    garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
@@ -173,7 +173,7 @@ describe 'as a registered user' do
    expect(plant_1.species).to eq('species 3')
    expect(plant_1.frequency).to eq(18)
  end
- it 'can delete plant' do
+ it 'can delete plant', :vcr do
    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
    garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)

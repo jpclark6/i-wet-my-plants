@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Dark Sky Api' do
-  it 'can connect' do
+  it 'can connect', :vcr do
     zip = 80204
 
     response = DarkSkyService.forecast(zip)

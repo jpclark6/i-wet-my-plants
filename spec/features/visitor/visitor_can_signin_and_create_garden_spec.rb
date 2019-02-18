@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'As a first time visitor to the site who signs in' do
+describe 'As a first time visitor to the site who signs in', :vcr do
   it 'I can create a garden' do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
@@ -16,7 +16,7 @@ describe 'As a first time visitor to the site who signs in' do
 
     fill_in :garden_zip_code, with: zip_code
     click_on 'Create Garden'
-    
+
     expect(current_path).to eq('/plants')
     expect(page).to have_content(name)
   end
