@@ -3,6 +3,9 @@
   margin: auto;
   text-align: center;
 }
+.current-weather{
+  padding: 20px;
+}
 .garden-header {
   font-size: 330%;
   text-shadow: 1px 1px 5px #000;
@@ -23,6 +26,8 @@
     font-size: 155%;
     color: #1c64a8;
     font-weight: bold;
+    text-shadow: 1px 1px 1px #000;
+    padding-left: 30px;
   }
   table {
     font-size: 150%;
@@ -37,10 +42,12 @@
   }
   td {
     color: #FE5F55;
+    text-shadow: 1px 1px 1px #000;
   }
   i {
     color: #1871c2;
     font-size: 40px;
+    text-shadow: 1px 1px 1px #000;
   }
   i:hover {
     color: #FE5F55;

@@ -1,11 +1,12 @@
 .btn-lg {
-  border: 2px solid #FE5F55;
+  border: 1px solid #000;
   background-color: #FE5F55;
   color: white;
   padding: 14px 78px;
   font-size: 26px;
   margin: 0 10px;
   cursor: pointer;
+  text-shadow: 1px 1px 1px #000;
 }
 .btn-lg:hover{
   border: 2px solid #FE5F55;
@@ -19,6 +20,7 @@
   padding: 10px 30px;
   font-size: 16px;
   cursor: pointer;
+  text-shadow: 1px 1px 1px #000;
 }
 .btn-md:hover{
   border: 1px solid #FE5F55;
