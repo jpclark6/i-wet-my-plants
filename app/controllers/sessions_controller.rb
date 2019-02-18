@@ -9,6 +9,13 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def guest
+    user = User.find_by(uid: '423145')
+    session[:user_id] = user.id
+    flash[:success] = "Welcome to the guest public account."
+    redirect_to plants_path
+  end
+
   private
 
   def auth_hash

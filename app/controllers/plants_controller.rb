@@ -1,6 +1,6 @@
 class PlantsController < ApplicationController
   def index
-    @plants = current_user.garden.plants
+    @plants = current_user.garden.plants_by_water_need
     @zip_code = current_user.garden.zip_code
     @current_forecast = DarkSkyFacade.current_forecast(@zip_code)
   end

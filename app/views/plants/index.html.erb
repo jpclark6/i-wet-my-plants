@@ -41,4 +41,11 @@
       <% end %>
     </div>
   </div>
+  <div class='tweet-option'>
+    <% if current_user.garden.tweet %>
+      <%= link_to 'Turn Tweets Off', stop_tweets_path, method: :patch %></td>
+    <% else %>
+      <%= link_to 'Turn Tweets On', start_tweets_path, method: :patch %>
+    <% end %>
+  </div>
 </div>
