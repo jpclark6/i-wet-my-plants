@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/register', to: "users#new"
   get '/login', to: "sessions#new"
   get '/auth/facebook/callback', to: "sessions#create"
+  get '/guest', to: "sessions#guest"
   delete '/logout', to: "sessions#destroy"
 
   resources :plants

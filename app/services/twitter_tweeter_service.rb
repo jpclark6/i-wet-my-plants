@@ -14,7 +14,9 @@ class TwitterTweeterService
 
   def send_tweets
     Plant.plants_that_need_watering.each do |plant|
-      send_tweet(create_message(plant))
+      if current_user.garden.tweet == true
+        send_tweet(create_message(plant))
+      end
     end
     "Success"
   end
