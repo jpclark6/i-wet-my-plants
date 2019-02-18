@@ -6,9 +6,15 @@
     </div>
     <ul class="nav navbar-nav">
       <i class="fas fa-bars"></i>
-      <li class="active"><a href="#">Home</a></li>
-      <li><%= link_to 'Garden', plants_path %></li>
+      <li><%= link_to "Home", plants_path %></li>
       <li><%= button_to 'Water All Plants', water_all_plants_path, method: :patch %></li>
+      <div class='tweet-option'>
+        <% if current_user.garden.tweet %>
+          <li><%= link_to 'Turn Tweets Off', stop_tweets_path, method: :patch %></li>
+        <% else %>
+          <li><%= link_to 'Turn Tweets On', start_tweets_path, method: :patch %></li>
+        <% end %>
+      </div>
       <li><%= link_to 'Logout', logout_path, method: :delete %></li>
     </ul>
   </div>
