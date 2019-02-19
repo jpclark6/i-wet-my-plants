@@ -1,0 +1,12 @@
+<div class="current-weather">
+  <% if flash.any? %>
+    <span class="flash">
+      <% flash.each do |key, value| %>
+        <h5><%= value %></h5>
+      <% end %>
+    </span>
+  <% end %>
+  <h3>Welcome <%= current_user.name %></h3>
+  <h5>Current Weather: </h5>
+  <%= image_tag("#{@current_forecast}.gif", :alt => "#{@current_forecast}", :height => "180", :style => "border-radius: 10%;") %>
+</div>
