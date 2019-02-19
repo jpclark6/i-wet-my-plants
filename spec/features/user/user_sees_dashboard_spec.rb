@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe 'as a registered user' do
-  it 'visits garden and sees plants in correct order' do
-    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
+  it 'visits garden and sees plants in correct order', :vcr do
+    user_1 = create(:user)
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
-    garden.plants << plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
-    garden.plants << plant_2 = Plant.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: Time.now)
-    garden.plants << plant_3 = Plant.create(name: 'Elbert', species: 'Beet', frequency: 18, last_watered: Time.now)
+    plant_1 = Plant.create(name: 'Alice', garden: garden, species: 'Rose', frequency: 24, last_watered: Time.now)
+    plant_2 = Plant.create(name: 'Tom', garden: garden, species: 'Carrot', frequency: 12, last_watered: Time.now)
+    plant_3 = Plant.create(name: 'Elbert', garden: garden, species: 'Beet', frequency: 18, last_watered: Time.now)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     visit '/plants'
@@ -27,7 +27,7 @@ describe 'as a registered user' do
     end
   end
 
-  it 'can turn twitter on and off if it wants to' do
+  it 'can turn twitter on and off if it wants to', :vcr do
     user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
     garden.plants << plant_1 = Plant.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)

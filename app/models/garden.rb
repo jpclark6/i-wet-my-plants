@@ -7,7 +7,8 @@ class Garden < ApplicationRecord
 
   def plants_by_water_need
     unless plants.empty? 
-      plants.select("plants.*, (EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) - (frequency - 6) * 3600) as needing_water").order('needing_water desc')
+      plants.select("plants.*, (EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) - (frequency - 6) * 3600) as needing_water")
+            .order('needing_water desc')
     else
       []
     end

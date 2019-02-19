@@ -51,7 +51,7 @@ GEM
       msgpack (~> 1.0)
     buftok (0.2.0)
     builder (3.2.3)
-    byebug (10.0.2)
+    byebug (11.0.0)
     capybara (3.13.2)
       addressable
       mini_mime (>= 0.1.3)
@@ -69,6 +69,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.4)
     diff-lcs (1.3)
     docile (1.3.1)
@@ -77,11 +79,13 @@ GEM
     equalizer (0.0.11)
     erubi (1.8.0)
     execjs (2.7.0)
-    factory_bot (5.0.0)
+    factory_bot (5.0.1)
       activesupport (>= 4.2.0)
     factory_bot_rails (5.0.1)
       factory_bot (~> 5.0.0)
       railties (>= 4.2.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
@@ -89,6 +93,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hashdiff (0.3.8)
     hashie (3.6.0)
     http (3.3.0)
       addressable (~> 2.3)
@@ -204,6 +209,7 @@ GEM
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
+    safe_yaml (1.0.4)
     sass (3.7.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -215,8 +221,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    shoulda-matchers (3.1.3)
-      activesupport (>= 4.0.0)
+    shoulda-matchers (4.0.0)
+      activesupport (>= 4.2.0)
     simple_oauth (0.3.1)
     simplecov (0.16.1)
       docile (~> 1.1)
@@ -259,11 +265,16 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    vcr (4.0.0)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webmock (3.5.1)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
@@ -281,6 +292,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.2)
   factory_bot_rails
+  faker
   faraday
   figaro
   jbuilder (~> 2.5)
@@ -301,7 +313,9 @@ DEPENDENCIES
   twitter
   tzinfo-data
   uglifier (>= 1.3.0)
+  vcr
   web-console (>= 3.3.0)
+  webmock
 
 RUBY VERSION
    ruby 2.4.1p111
