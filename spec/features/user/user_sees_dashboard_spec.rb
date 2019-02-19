@@ -11,8 +11,8 @@ describe 'as a registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     visit '/plants'
     within('.menu') do
-      expect(page).to have_link('Garden')
-      expect(page).to have_button('Water All Plants')
+      expect(page).to have_link('Home')
+      expect(page).to have_link('Water All Plants')
       expect(page).to have_link('Logout')
     end
 
@@ -23,7 +23,6 @@ describe 'as a registered user' do
       expect(page).to have_content(plant_2.name)
       expect(page).to have_content(plant_2.species)
       expect(page).to have_content(plant_2.hours_until_watering)
-      expect(page).to have_link("Edit")
       expect(page).to have_button()
     end
   end

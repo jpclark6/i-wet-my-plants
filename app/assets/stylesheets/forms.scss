@@ -9,12 +9,19 @@
   border: 1px solid white;
   border-radius: 20px;
 }
+h3 {
+  padding: 20px;
+}
 h4 {
   padding-top: 40px;
   padding-bottom: 40px;
   margin-left: 10px;
   margin-right: 10px;
   font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+}
+h5 {
+  text-shadow: 1px 1px 0.5px #000;
 }
 input::-webkit-input-placeholder {
      opacity: 0.9;

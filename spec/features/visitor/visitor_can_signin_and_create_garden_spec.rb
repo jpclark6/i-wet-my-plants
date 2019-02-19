@@ -18,6 +18,9 @@ describe 'As a first time visitor to the site who signs in', :vcr do
     click_on 'Create Garden'
 
     expect(current_path).to eq('/plants')
+
+    user_1 = User.first
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     expect(page).to have_content(name)
   end
 end
