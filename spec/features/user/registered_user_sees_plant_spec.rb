@@ -47,8 +47,8 @@ describe 'as a registered user' do
     expect(page).to have_content("Your plant was added")
   end
   it 'it cannot create a plant with bad info', :vcr do
-    user_1 = User.create(name: "Bobby", uid: '49j8jesj')
-    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: "Maddie")
+    user_1 = create(:user)
+    garden = create(:garden, user: user_1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit '/plants'

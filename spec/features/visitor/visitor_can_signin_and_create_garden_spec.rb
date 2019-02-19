@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'As a first time visitor to the site who signs in', :vcr do
   it 'I can create a garden' do
-    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
+    user_1 = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit '/gardens/new'
