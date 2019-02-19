@@ -15,6 +15,6 @@ FactoryBot.define do
      name { Faker::Name.first_name }
      species { Faker::Name.last_name }
      sequence(:frequency) { |n| 12 + n }
-     last_watered { Faker::Time.day }
+     last_watered { Faker::Time.between(DateTime.now - 1, DateTime.now) }
   end
 end

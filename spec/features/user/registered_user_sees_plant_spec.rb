@@ -2,27 +2,23 @@ require "rails_helper"
 
 describe 'as a registered user' do
   it 'sees a plant happy path', :vcr do
-    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
-    plant_1 = garden.plants.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
-    plant_2 = garden.plants.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: "2019-02-09")
+    yesterday = 1.day.ago
+    user_1 = create(:user)
+    garden = create(:garden, user: user_1)
+    plant_1 = create(:plant, garden: garden, last_watered: yesterday)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit plant_path(plant_1.id)
 
     expect(page).to have_content("Name: #{plant_1.name}")
     expect(page).to have_content("Last Watered: #{plant_1.last_watered.to_date}")
-    expect(page).to_not have_content("Name: #{plant_2.name}")
-    expect(page).to_not have_content("Last Watered: #{plant_2.last_watered.to_date}")
 
     expect(page).to have_link("Edit Plant")
     expect(page).to have_link("Kill Me")
   end
   it 'create a plant happy path', :vcr do
-    user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-    garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf')
-    plant_1 = garden.plants.create(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now)
-    plant_2 = garden.plants.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: "2019-02-09")
+    user_1 = create(:user)
+    garden = create(:garden, user: user_1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit '/plants'
@@ -73,9 +69,9 @@ describe 'as a registered user' do
     expect(page).to have_content("species can't be blank")
  end
  it 'can edit plant', :vcr do
-   user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
-   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
+   user_1 = create(:user)
+   garden = create(:garden, user: user_1)
+   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
    visit '/plants'
@@ -104,9 +100,9 @@ describe 'as a registered user' do
    expect(plant_1.frequency).to eq(18)
  end
  it 'cannot edit plant with missing species plant', :vcr do
-   user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
-   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
+   user_1 = create(:user)
+   garden = create(:garden, user: user_1)
+   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
    visit edit_plant_path(plant_1)
@@ -124,9 +120,9 @@ describe 'as a registered user' do
  end
 
  it 'cannot edit plant with missing frequency plant', :vcr do
-   user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
-   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
+   user_1 = create(:user)
+   garden = create(:garden, user: user_1)
+   plant_1 = create(:plant, name: 'Alice', species: 'Rose', frequency: 24, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
    visit edit_plant_path(plant_1)
@@ -143,9 +139,9 @@ describe 'as a registered user' do
    expect(page).to have_content("frequency can't be blank")
  end
  it 'can edit plant from plant show page', :vcr do
-   user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
-   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
+   user_1 = create(:user)
+   garden = create(:garden, user: user_1)
+   plant_1 = create(:plant, name: 'Alice', species: 'Rose', frequency: 24, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
    visit plant_path(plant_1)
@@ -174,10 +170,10 @@ describe 'as a registered user' do
    expect(plant_1.frequency).to eq(18)
  end
  it 'can delete plant', :vcr do
-   user_1 = User.create!(name: "Bobby", uid: '49j8jesj')
-   garden = Garden.create!(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'Maddie')
-   plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
-   plant_2 = garden.plants.create(name: 'Tom', species: 'Carrot', frequency: 12, last_watered: "2019-02-09", garden: garden)
+   user_1 = create(:user)
+   garden = create(:garden, user: user_1)
+   plant_1 = create(:plant, name: 'Alice', species: 'Rose', frequency: 24, garden: garden)
+   plant_2 = create(:plant, garden: garden)
 
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
