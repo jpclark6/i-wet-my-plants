@@ -13,6 +13,7 @@ class PlantsController < ApplicationController
   def create
     garden = current_user.garden
     @plant = garden.plants.create(plant_params)
+    @plant.update(last_watered: Time.now)
     if @plant.save
       redirect_to plants_path(@plant.id)
       flash[:success] = "Your plant was added"

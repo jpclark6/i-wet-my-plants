@@ -19,7 +19,7 @@ class DarkSkyFacade
   end
 
   def self.current_temp(zip)
-    DarkSkyService.forecast(zip)[:currently][:temperature]
+    DarkSkyService.forecast(zip)[:currently][:temperature].round(1)
   end
 
 end
