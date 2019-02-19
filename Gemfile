@@ -35,6 +35,7 @@ gem 'omniauth-facebook'
 gem 'twitter'
 gem 'newrelic_rpm'
 gem 'launchy'
+gem 'fast_jsonapi'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'bundler', '~> 2.0.1'

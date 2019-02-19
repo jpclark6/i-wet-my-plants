@@ -14,4 +14,10 @@ Rails.application.routes.draw do
   patch '/water_plants', to: 'plants#water_all', as: 'water_all_plants'
   patch '/stop_tweets', to: 'tweets#stop', as: 'stop_tweets'
   patch '/start_tweets', to: 'tweets#start', as: 'start_tweets'
+
+  namespace :api do
+    namespace :v1 do
+      resources :plants, only: [:index]
+    end
+  end
 end

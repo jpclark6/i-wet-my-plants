@@ -7,7 +7,8 @@ class GardensController < ApplicationController
     @garden = Garden.new(name: garden_params[:name],
                             twitter_handle: garden_params[:twitter_handle],
                             zip_code: garden_params[:zip_code],
-                            user_id: current_user.id)
+                            user_id: current_user.id, 
+                            secret_key: SecureRandom.hex)
 
     if @garden.save
       redirect_to plants_path
