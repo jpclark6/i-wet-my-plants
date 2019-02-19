@@ -1,23 +1,15 @@
-<nav class="navbar navbar-default menu" >
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <%= image_tag("iwmp_logo.jpg", :alt => "I Wet My Plants Cartoon", :height => "150", :style => "border-radius: 50%;") %>
-      <h1 class="logo_words">I Wet My Plants</h1>
-    </div>
-    <ul class="nav navbar-nav">
-      <i class="fas fa-bars"></i>
-      <li class="active"><a href="#">Home</a></li>
-      <li><%= link_to 'Garden', plants_path %></li>
-      <li><%= button_to 'Water All Plants', water_all_plants_path, method: :patch %></li>
-      <li><%= link_to 'Logout', logout_path, method: :delete %></li>
-    </ul>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-default menu" >
+  <%= link_to image_tag("iwmp_logo.jpg", :alt => "I Wet My Plants Cartoon", :height => "150", :style => "border-radius: 50%;", class: 'd-inline'), plants_path, class: 'home-img-link'  %>
+  <h1 class="logo_words d-inline">I Wet My Plants</h1>
+  <%= link_to "Home", plants_path, class: 'home-link' %>
+  <%= link_to 'Water All Plants', water_all_plants_path, method: :patch %>
+  <span class='tweet-option'>
+    <% if current_user.garden && current_user.garden.tweet %>
+      <%= link_to 'Turn Tweets Off', stop_tweets_path, method: :patch %>
+    <% elsif current_user.garden %>
+      <%= link_to 'Turn Tweets On', start_tweets_path, method: :patch %>
+    <% end %>
+  </span>
+  <%= link_to 'Logout', logout_path, method: :delete %>
 </nav>
 
-<% if flash.any? %>
-  <div class="flash">
-    <% flash.each do |key, value| %>
-      <%= value %>
-    <% end %>
-  </div>
-<% end %>

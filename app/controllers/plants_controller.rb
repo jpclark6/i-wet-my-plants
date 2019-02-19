@@ -3,6 +3,7 @@ class PlantsController < ApplicationController
     @plants = current_user.garden.plants_by_water_need
     @zip_code = current_user.garden.zip_code
     @current_forecast = DarkSkyFacade.current_forecast(@zip_code)
+    @current_temp = DarkSkyFacade.current_temp(@zip_code)  
   end
 
   def new
