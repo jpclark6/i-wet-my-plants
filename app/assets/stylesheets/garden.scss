@@ -19,7 +19,7 @@
   border-radius: 20px;
 
   th {
-    font-size: 155%;
+    font-size: 27px;
     color: #1c64a8;
     font-weight: bold;
     text-shadow: 1px 1px 1px #000;
@@ -39,6 +39,7 @@
   td {
     color: #FE5F55;
     text-shadow: 1px 1px 1px #000;
+    font-size: 27px;
   }
   i {
     color: #1871c2;
@@ -62,6 +63,12 @@
     margin-bottom: 15px;
     font-size: 35px;
   }
+  h4 {
+    padding: 10px;
+  }
+  img {
+    border: 1px solid white;
+  }
 }
 
 .garden {
@@ -71,4 +78,15 @@
 
 .garden-name {
   text-align: center;
+  text-shadow: 1px 1px 1px #000;
+  font-size: 42px;
+}
+.add_plant {
+  width: 100%;
+  text-align: center;
+}
+
+.plant button {
+  background-color: transparent;
+  border: none;
 }
