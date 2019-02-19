@@ -28,8 +28,7 @@ describe 'as a registered user' do
     visit '/plants'
 
     within('.menu') do
-      expect(page).to have_link('Garden')
-      expect(page).to have_button('Water All Plants')
+      expect(page).to have_link('Water All Plants')
       expect(page).to have_link('Logout')
     end
     within('.add_plant') do
@@ -78,7 +77,7 @@ describe 'as a registered user' do
    plant_1 = Plant.create!(name: 'Alice', species: 'Rose', frequency: 24, last_watered: Time.now, garden: garden)
    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
-   visit '/plants'
+   visit "/plants/#{plant_1.id}"
 
    expect(page).to have_link('Edit')
 

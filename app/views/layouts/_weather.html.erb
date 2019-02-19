@@ -7,6 +7,9 @@
     </span>
   <% end %>
   <h3>Welcome <%= current_user.name %></h3>
+  <div class="add_plant">
+    <%= link_to "Add Plant", new_plant_path, class: 'btn btn-outline-primary btn-lg' %>
+  </div>
   <h5>Current Weather: </h5>
   <%= image_tag("#{@current_forecast}.gif", :alt => "#{@current_forecast}", :height => "180", :style => "border-radius: 10%;") %>
 </div>
