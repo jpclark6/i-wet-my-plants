@@ -33,7 +33,7 @@ gem 'figaro'
 gem 'faraday'
 gem 'omniauth-facebook'
 gem 'twitter'
-
+gem 'newrelic_rpm'
 gem 'launchy'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
