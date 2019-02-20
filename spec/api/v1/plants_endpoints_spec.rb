@@ -39,26 +39,3 @@ describe 'api for optional plant hardware' do
     expect(Plant.find(plant_3.id).last_watered).to_not eq(time)
   end
 end
-
-# require 'digest'
-
-# # Compute a complete digest
-# Digest::SHA256.digest 'message'
-
-
-# describe "Invoice API" do
-#   it "sends a list of invoices" do
-#     create_list(:invoice, 3)
-
-#     get '/api/v1/invoices.json'
-
-#     expect(response).to be_successful
-
-#     invoice_data = JSON.parse(response.body)
-
-#     expect(invoice_data["data"].length).to eq(3)
-
-#     expect(invoice_data["data"][0]["attributes"]["customer_id"]).to eq(Invoice.first.customer_id)
-#     expect(invoice_data["data"][1]["attributes"]["customer_id"]).to eq(Invoice.second.customer_id)
-#     expect(invoice_data["data"][2]["attributes"]["customer_id"]).to eq(Invoice.third.customer_id)
-#     expect(invoice_data["data"][2]["type"]).to eq("invoice")

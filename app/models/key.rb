@@ -1,27 +1,52 @@
 class Key
-  def self.valid?(key)
-    plant_id = find_id(key).to_i
-    date = DateTime.parse(key.split(".")[1])
-    secret = key.split(".")[2]
-    message = "#{key.split(".")[0]}.#{key.split(".")[1]}"
-    expected_secret = Digest::SHA256.hexdigest "#{message}#{ENV['HARDWARE_SECRET_API']}"
-
-    if Plant.find(plant_id) == nil
-      return false
-    end
-
-    if date - DateTime.now < 0
-      return false
-    end
-
-    if secret != expected_secret
-      return false
-    end
-
-    true
+  def initialize(key)
+    @key = key
   end
 
-  def self.find_id(key)
-    key.split(".")[0]
+  def valid?
+    if plant_exists? && date_time_valid? && correct_secret?
+      return true
+    else
+      return false
+    end
+  end
+
+  def plant_id
+    @key.split(".")[0]
+  end
+
+  private
+
+  def correct_secret?
+    secret == expected_secret
+  end
+
+  def date_time_valid?
+    date - DateTime.now > 0
+  end
+
+  def plant_exists?
+    id = plant_id.to_i
+    Plant.find(id)
+  end
+
+  def time_component
+    @key.split(".")[1]
+  end
+
+  def date
+    DateTime.parse(time_component)
+  end
+
+  def secret
+    @key.split(".")[2]
+  end
+
+  def message
+    "#{plant_id}.#{time_component}"
+  end
+
+  def expected_secret
+    Digest::SHA256.hexdigest "#{message}#{ENV['HARDWARE_SECRET_API']}"
   end
 end

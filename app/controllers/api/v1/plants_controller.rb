@@ -6,10 +6,10 @@ class Api::V1::PlantsController < ApplicationController
   end
 
   def water
-    if Key.valid?(params[:key])
-      plant_id = Key.find_id(params[:key])
-      Plant.find(plant_id).water_plant
-      message = "Plant #{plant_id} watered successfully"
+    key = Key.new(params[:key])
+    if key.valid?
+      Plant.water_plant_from_key(key)
+      message = "Plant #{key.plant_id} watered successfully"
     else
       message = "Error. Something went wrong. Try again."
     end
