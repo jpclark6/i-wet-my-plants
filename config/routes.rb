@@ -17,7 +17,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :plants, only: [:index]
+      get '/plants', to: 'plants#index'
+      post '/plants', to: 'plants#water'
     end
   end
 end
