@@ -41,5 +41,15 @@ describe Plant do
       plant_3 = create(:plant, name: 'Elbert', species: 'Beet', frequency: 4, garden: garden, last_watered: Time.now)
       expect(Plant.plants_that_need_watering).to eq([plant_3, plant_2])
     end
+    it '#water_plant_from_key' do
+      user_1 = create(:user)
+      time = 5.hours.ago
+      garden = create(:garden)
+      plant_1 = create(:plant, name: 'Alice', species: 'Rose', frequency: 5, garden: garden, last_watered: time)
+      api_key = Key.create_water_key(plant_1)
+      key = Key.new(api_key)
+      Plant.water_plant_from_key(key)
+      expect(Plant.first.last_watered).to_not eq(time)
+    end
   end
 end

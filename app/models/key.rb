@@ -3,6 +3,12 @@ class Key
     @key = key
   end
 
+  def self.create_water_key(plant)
+    message = "#{plant.id}.#{1.hour.from_now}"
+    key = Digest::SHA256.hexdigest "#{message}#{ENV['HARDWARE_SECRET_API']}"
+    "#{message}.#{key}"
+  end
+
   def valid?
     if plant_exists? && date_time_valid? && correct_secret?
       return true
@@ -12,7 +18,7 @@ class Key
   end
 
   def plant_id
-    @key.split(".")[0]
+    @key.split(".")[0].to_i
   end
 
   private
@@ -26,7 +32,7 @@ class Key
   end
 
   def plant_exists?
-    id = plant_id.to_i
+    id = plant_id
     Plant.find(id)
   end
 
