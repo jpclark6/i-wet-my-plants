@@ -24,7 +24,13 @@
                 <tr class='plant' id='plant-<%= plant.id %>'>
                   <td><%= link_to(plant.name, plant_path(plant), :class => "name") %></td>
                   <td><%= plant.species %></td>
-                  <td><%= plant.hours_until_watering %></td>
+                  <% if plant.hours_until_watering < 0 %>
+                  <td class="red"><%= plant.hours_until_watering %></td>
+                  <% elsif plant.hours_until_watering < 24%>
+                  <td class="yellow"><%= plant.hours_until_watering %></td>
+                  <% else %>
+                  <td class="green"><%= plant.hours_until_watering %></td>
+                  <% end  %>
                   <td><%= button_to(water_plant_path(plant), method: :patch) do %>
                     <i class="fas fa-tint"></i>
                   <% end %></td>
