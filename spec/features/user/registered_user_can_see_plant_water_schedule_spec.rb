@@ -34,12 +34,12 @@ describe 'as a registered user' do
 
       expect(page).to have_css('.waterings')
       within '.waterings' do
-        expect(page).to have_content(watering_1.created_at)
-        expect(page).to have_content(watering_2.created_at)
-        expect(page).to have_content(watering_3.created_at)
-        expect(page).to have_content(watering_4.created_at)
-        expect(page).to have_content(watering_5.created_at)
-        expect(page).to have_content(watering_6.created_at)
+        expect(page).to have_content(watering_1.created_at.to_date)
+        expect(page).to have_content(watering_2.created_at.to_date)
+        expect(page).to have_content(watering_3.created_at.to_date)
+        expect(page).to have_content(watering_4.created_at.to_date)
+        expect(page).to have_content(watering_5.created_at.to_date)
+        expect(page).to have_content(watering_6.created_at.to_date)
       end
     end
   end

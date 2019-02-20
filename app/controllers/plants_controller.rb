@@ -27,6 +27,7 @@ class PlantsController < ApplicationController
     @user = current_user
     @garden = @user.garden
     @plant = @garden.plants.find(params[:id])
+    @plant_waterings = @plant.waterings
   end
 
   def edit
