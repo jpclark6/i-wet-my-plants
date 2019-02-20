@@ -3,7 +3,7 @@ class PlantsController < ApplicationController
     @plants = current_user.garden.plants_by_water_need
     @zip_code = current_user.garden.zip_code
     @current_forecast = DarkSkyFacade.current_forecast(@zip_code)
-    @current_temp = DarkSkyFacade.current_temp(@zip_code)  
+    @current_temp = DarkSkyFacade.current_temp(@zip_code)
   end
 
   def new
@@ -62,12 +62,14 @@ class PlantsController < ApplicationController
 
   def water
     plant = Plant.find(params[:id])
+    watering = Watering.create(plant_id: plant.id)
     plant.water_plant
     redirect_to plants_path
   end
 
   def water_all
     current_user.garden.plants.each do |plant|
+      watering = Watering.create(plant_id: plant.id)
       plant.water_plant
     end
     redirect_to plants_path
