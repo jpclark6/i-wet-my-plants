@@ -1,7 +1,7 @@
-class Api::V1::PlantsController < ApplicationController
+class Api::V1::PlantsController < ApiController
   def index
     garden = Garden.find_by(secret_key: params[:key])
-    plants = garden.plants_that_need_water
+    plants = garden.plants_that_need_water_api
     render json: PlantsSerializer.new(plants)
   end
 

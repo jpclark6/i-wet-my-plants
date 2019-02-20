@@ -4,7 +4,7 @@ describe 'api for optional plant hardware' do
   it 'sends a secure list of plants that need to be watered to a select user' do
     user = create(:user)
     time = 5.hours.ago
-    garden = Garden.create(name: 'Backyard', user: user, zip_code: 80026, twitter_handle: 'asdfasdf', tweet: false, secret_key: SecureRandom.hex)
+    garden = Garden.create(name: 'Backyard', user: user, zip_code: 80026, twitter_handle: 'asdfasdf', tweet: false, secret_key: SecureRandom.hex(6))
     plant_1 = Plant.create(name: 'Alice', garden: garden, species: 'Rose', frequency: 24, last_watered: Time.now)
     plant_2 = Plant.create(name: 'Tom', garden: garden, species: 'Carrot', frequency: 12, last_watered: Time.now)
     plant_3 = Plant.create(name: 'Elbert', garden: garden, species: 'Beet', frequency: 3, last_watered: time)
@@ -21,9 +21,9 @@ describe 'api for optional plant hardware' do
   it 'can accept a secure post request to water a plant' do
     user = create(:user)
     time = 5.hours.ago
-    garden = Garden.create(name: 'Backyard', user: user, zip_code: 80026, twitter_handle: 'asdfasdf', tweet: false, secret_key: SecureRandom.hex)
+    garden = Garden.create(name: 'Backyard', user: user, zip_code: 80026, twitter_handle: 'asdfasdf', tweet: false, secret_key: SecureRandom.hex(6))
     plant_1 = Plant.create(name: 'Alice', garden: garden, species: 'Rose', frequency: 24, last_watered: Time.now)
-    plant_2 = Plant.create(name: 'Tom', garden: garden, species: 'Carrot', frequency: 12, last_watered: Time.now)
+    plant_2 = Plant.create(name: 'Tom', garden: garden, species: 'Carrot', frequency: 5, last_watered: Time.now)
     plant_3 = Plant.create(name: 'Elbert', garden: garden, species: 'Beet', frequency: 3, last_watered: time)
     
     get "/api/v1/plants?key=#{garden.secret_key}"

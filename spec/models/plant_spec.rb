@@ -31,9 +31,7 @@ describe Plant do
       plant_1.water_plant
       expect(plant_1.hours_until_watering).to eq(plant_1.frequency)
     end
-  end
-  describe 'class methods' do
-    it '#plants_that_need_watering' do
+    it '.plants_that_need_watering' do
       user_1 = create(:user)
       garden = create(:garden)
       plant_1 = create(:plant, name: 'Alice', species: 'Rose', frequency: 12, garden: garden, last_watered: Time.now)
@@ -41,6 +39,8 @@ describe Plant do
       plant_3 = create(:plant, name: 'Elbert', species: 'Beet', frequency: 4, garden: garden, last_watered: Time.now)
       expect(Plant.plants_that_need_watering).to eq([plant_3, plant_2])
     end
+  end
+  describe 'class methods' do
     it '#water_plant_from_key' do
       user_1 = create(:user)
       time = 5.hours.ago
