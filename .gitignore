@@ -36,3 +36,4 @@
 # Ignore application configuration
 /config/application.yml
 public/assets
+.DS_Store
