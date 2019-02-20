@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :watering do
+    
+  end
+
   factory :user do
     sequence(:name) { |n| "Lisa#{n}"}
     sequence(:uid) { |n| "#{n}9j8jesj" }
