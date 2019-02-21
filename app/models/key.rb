@@ -33,6 +33,9 @@ class Key
 
   def plant_exists?
     id = plant_id
+    if id == 0
+      return false
+    end
     Plant.find(id)
   end
 

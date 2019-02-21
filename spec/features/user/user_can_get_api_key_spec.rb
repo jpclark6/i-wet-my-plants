@@ -13,7 +13,7 @@ describe 'as a user' do
     visit '/plants'
     expect(page).to have_content("Hardware Key: #{garden.secret_key}")
   end
-  it 'can see info about what the api does' do
+  it 'can see info about what the api does', :vcr do
     user_1 = create(:user)
     garden = Garden.create(name: 'Backyard', user: user_1, zip_code: 80026, twitter_handle: 'asdfasdf', secret_key: 'sdafion42')
     plant_1 = Plant.create(name: 'Alice', garden: garden, species: 'Rose', frequency: 24, last_watered: Time.now)
