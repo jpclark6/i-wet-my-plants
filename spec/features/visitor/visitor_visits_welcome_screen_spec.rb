@@ -4,7 +4,7 @@ describe 'as a visitor on the welcome screen' do
   it 'shows link to login with facebook to signin or create an account', :vcr do
     visit '/'
 
-    expect(page).to have_content("I Wet My Plants is an app that helps you remember to water the plants in your garden, and send you a friendly reminder if you forget.")
+    expect(page).to have_content("An app that helps you remember to water your garden, and if you forget, your plants will send you a friendly reminder.")
 
     expect(page).to have_link("Login with Facebook")
   end
@@ -17,8 +17,8 @@ describe 'as a visitor on the welcome screen' do
 
     visit '/'
 
-    expect(page).to have_link("Login as Guest")
-    click_on 'Login as Guest'
+    expect(page).to have_link("Demo Our App")
+    click_on 'Demo Our App'
     expect(current_path).to eq(plants_path)
   end
 end
