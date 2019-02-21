@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
   def guest
     user = User.find_by(uid: '423145')
     session[:user_id] = user.id
-    flash[:success] = "Welcome to the guest public account."
     redirect_to plants_path
   end
 
@@ -29,7 +28,6 @@ class SessionsController < ApplicationController
       redirect_to new_garden_path
     else user.save && user.garden != nil
       session[:user_id] = user.id
-      flash[:success] = "Welcome back #{user.name}."
       redirect_to plants_path
     end
   end
