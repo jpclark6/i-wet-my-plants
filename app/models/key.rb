@@ -10,11 +10,7 @@ class Key
   end
 
   def valid?
-    if plant_exists? && date_time_valid? && correct_secret?
-      return true
-    else
-      return false
-    end
+    plant_exists? && date_time_valid? && correct_secret?
   end
 
   def plant_id
