@@ -43,7 +43,6 @@ describe 'as a registered user' do
 
     plant_id = Plant.all.last.id
     expect(current_path).to eq(plants_path(plant_id))
-    expect(page).to have_content("Your plant was added")
   end
   it 'it cannot create a plant with bad info', :vcr do
     user_1 = create(:user)
@@ -181,7 +180,6 @@ describe 'as a registered user' do
    click_on "Kill Me"
 
    expect(current_path).to eq(plants_path)
-   expect(page).to have_content("Your plant has been murdered")
    expect(page).to_not have_content(plant_1.name)
    expect(page).to_not have_content(plant_1.species)
    expect(page).to have_content(plant_2.name)

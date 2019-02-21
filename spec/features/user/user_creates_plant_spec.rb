@@ -28,7 +28,6 @@ describe 'as a registered user' do
 
     plant_id = Plant.all.last.id
     expect(current_path).to eq(plants_path(plant_id))
-    expect(page).to have_content("Your plant was added")
   end
 
   it 'it cannot create a plant with bad info', :vcr do
