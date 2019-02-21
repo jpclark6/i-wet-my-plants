@@ -1,5 +1,4 @@
 class DarkSkyFacade
-
   def self.current_forecast(zip)
     DarkSkyService.forecast(zip)[:currently][:icon]
   end
@@ -18,5 +17,11 @@ class DarkSkyFacade
     else
       return false
     end
+  end
+
+  private
+
+  def self.search_result(zip)
+     @_search_results ||= service(zip)
   end
 end
