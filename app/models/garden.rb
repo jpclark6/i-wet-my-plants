@@ -5,7 +5,6 @@ class Garden < ApplicationRecord
   belongs_to :user
   has_many :plants
   validates_length_of :zip_code, :maximum => 5
-  has_one :api_key
 
 
   def plants_by_water_need

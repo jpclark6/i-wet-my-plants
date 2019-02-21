@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      get '/', to: 'welcome#index'
       get '/plants', to: 'plants#index'
       post '/plants', to: 'plants#water'
     end

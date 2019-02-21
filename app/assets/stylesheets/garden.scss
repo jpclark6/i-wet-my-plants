@@ -100,3 +100,39 @@
   background-color: transparent;
   border: none;
 }
+
+ font {
+   color: #FE5F55;
+ }
+ h3 {
+   text-shadow: 2px 2px 5px #000;
+   font-size: 40px;
+ }
+body {
+  background-image: image-url('city_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #FE5F55;
+  font-family: 'Kalam', cursive;
+}
+.api-info {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  background-color: rgba(255,255,255,0.6);
+  border-radius: 10px;
+  max-width: 80%;
+  padding: 0 40px;
+  padding-bottom: 25px;
+  margin: auto;
+  color: darkblue;
+  p {
+    font-size: 140%;
+  }
+  li {
+    padding: 4px;
+    font-size: 140%;
+  }
+}
+.api-title {
+  text-align: center;
+  color: #FE5F55;
+}

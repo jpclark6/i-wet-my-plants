@@ -1,0 +1,21 @@
+<%= render 'layouts/nav' %>
+<div class='api-info'>
+  <h3 class='api-title'>API Information</h3>
+  <p>This API can be used to connect watering tools, such as a valve or a pump to
+  water plants. The API will tell you which plants are currently due to be watered, as well
+  as proide a way to reset the water counter. Using this you can create a fully automated watering
+  system.</p>
+  <h1>How to use API and setup watering hardware:</h1>
+  <p>Hardware must be able to make GET and POST requests to integrate with the app.</p>
+  <ul>
+    <li>At the bottom of the '/plants' path find the hardware key</li>
+    <li>Send a GET request to '/api/v1/plants' with the key as a parameter</li>
+    <li>Example: GET '/api/v1/plants?key=0b6753e40fce'</li>
+    <li>JSON will be returned with plants that need to be watered</li>
+    <li>After watering the plant send a POST request with a key as the secret from the GET request</li>
+    <li>Example: POST '/api/v1/plants?/api/v1/plants?key=5.2019-02-20 22:24:00 UTC.52627c50b1d806ac07d3e052225d808be4216e36874589324f09eeadc8adbe95'</li>
+    <li>Successful POSTs will receive a confirmation back from the server</li>
+  </ul>
+  <p>Example return from GET request with plants that need watering:</p>
+  <script src="https://gist.github.com/jpclark6/16235c8fc36019d5dc9ffbbea8987d7e.js"></script>
+</div>
