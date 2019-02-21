@@ -54,7 +54,6 @@ class PlantsController < ApplicationController
     @plant = @garden.plants.find(params[:id])
     if @plant.destroy
       flash[:success]= "Your plant has been murdered"
-      redirect_to plants_path
     else
       flash[:error]= "Your plant could not be deleted"
     end
