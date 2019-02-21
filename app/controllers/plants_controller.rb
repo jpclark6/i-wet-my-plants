@@ -41,7 +41,6 @@ class PlantsController < ApplicationController
     @garden = @user.garden
     @plant = @garden.plants.find(params[:id])
     if @plant.update(plant_params)
-      flash[:success]= "Your plant is updated"
       redirect_to plants_path
     else
       @errors = @plant.errors
@@ -55,6 +54,7 @@ class PlantsController < ApplicationController
     @plant = @garden.plants.find(params[:id])
     if @plant.destroy
       flash[:success]= "Your plant has been murdered"
+      redirect_to plants_path
     else
       flash[:error]= "Your plant could not be deleted"
     end
