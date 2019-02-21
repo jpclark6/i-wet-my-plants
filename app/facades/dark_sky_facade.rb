@@ -4,7 +4,7 @@ class DarkSkyFacade
   end
 
   def self.current_temp(zip)
-    service(zip)[:currently][:temperature].round(1)
+    service(zip)[:currently][:temperature]
   end
 
   def self.current_precip_probability(zip)
