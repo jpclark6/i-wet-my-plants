@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_173110) do
+ActiveRecord::Schema.define(version: 2019_02_19_234509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_173110) do
     t.bigint "user_id"
     t.string "twitter_handle"
     t.boolean "tweet", default: true
+    t.string "secret_key"
     t.index ["user_id"], name: "index_gardens_on_user_id"
   end
 
@@ -28,7 +29,9 @@ ActiveRecord::Schema.define(version: 2019_02_18_173110) do
     t.string "name"
     t.string "species"
     t.integer "frequency"
-    t.datetime "last_watered", default: "2019-02-18 22:01:23"
+
+    t.datetime "last_watered", default: "2019-02-20 03:30:51"
+
     t.bigint "garden_id"
     t.index ["garden_id"], name: "index_plants_on_garden_id"
   end
@@ -39,6 +42,14 @@ ActiveRecord::Schema.define(version: 2019_02_18_173110) do
     t.string "uid"
   end
 
+  create_table "waterings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "plant_id"
+    t.index ["plant_id"], name: "index_waterings_on_plant_id"
+  end
+
   add_foreign_key "gardens", "users"
   add_foreign_key "plants", "gardens"
+  add_foreign_key "waterings", "plants"
 end

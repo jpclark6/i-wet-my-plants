@@ -3,7 +3,8 @@ class PlantsController < ApplicationController
     @plants = current_user.garden.plants_by_water_need
     @zip_code = current_user.garden.zip_code
     @current_forecast = DarkSkyFacade.current_forecast(@zip_code)
-    @current_temp = DarkSkyFacade.current_temp(@zip_code)  
+    @current_temp = DarkSkyFacade.current_temp(@zip_code)
+    @location = GoogleGeocodeService.new(@zip_code).location_data[:results][0][:address_components][1][:long_name]
   end
 
   def new
@@ -27,6 +28,7 @@ class PlantsController < ApplicationController
     @user = current_user
     @garden = @user.garden
     @plant = @garden.plants.find(params[:id])
+    @plant_waterings = @plant.waterings
   end
 
   def edit
@@ -62,12 +64,14 @@ class PlantsController < ApplicationController
 
   def water
     plant = Plant.find(params[:id])
+    watering = Watering.create(plant_id: plant.id)
     plant.water_plant
     redirect_to plants_path
   end
 
   def water_all
     current_user.garden.plants.each do |plant|
+      watering = Watering.create(plant_id: plant.id)
       plant.water_plant
     end
     redirect_to plants_path
