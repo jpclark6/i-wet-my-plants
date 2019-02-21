@@ -14,7 +14,6 @@ describe 'as a registered user' do
 
       expect(page).to have_content("Current Weather:")
       expect(page).to have_content("Lafayette")
-      expect(page).to have_content("Location:")
       expect(page).to have_content("F")
     end
   end
