@@ -1,7 +1,7 @@
 <%= render "layouts/nav" %>
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-center flex-wrap">
   <%= render "layouts/weather" %>
-  <div class='garden'>
+  <div class='garden p-2 flex-sm-fill'>
     <h2 class='garden-name'>Garden name: <%= current_user.garden.name %></h2>
     <div class="add_plant">
       <%= link_to "Add Plant", new_plant_path, class: 'btn btn-outline-primary btn-md' %>
