@@ -1,15 +1,14 @@
 class DarkSkyFacade
-
   def self.current_forecast(zip)
-    DarkSkyService.forecast(zip)[:currently][:icon]
+    service(zip)[:currently][:icon]
   end
 
   def self.current_temp(zip)
-    DarkSkyService.forecast(zip)[:currently][:temperature].round(1)
+    service(zip)[:currently][:temperature].round(1)
   end
 
   def self.current_precip_probability(zip)
-    DarkSkyService.forecast(zip)[:currently][:precipProbability]
+    service(zip)[:currently][:precipProbability]
   end
 
   def self.raining?(zip)
@@ -18,5 +17,11 @@ class DarkSkyFacade
     else
       return false
     end
+  end
+
+  private
+
+  def self.service(zip)
+    DarkSkyService.forecast(zip)
   end
 end

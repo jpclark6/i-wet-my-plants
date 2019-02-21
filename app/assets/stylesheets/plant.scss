@@ -15,3 +15,14 @@
 .button-group {
   padding: 20px;
 }
+.hardware-key {
+  display: inline-block;
+  width: 300px;
+  background-color: rgba(255,255,255,0.6);
+  border-radius: 15px;
+  color: darkblue;
+  p {
+    margin: 0;
+    padding: 4px 7px;
+  }
+}

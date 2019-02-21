@@ -21,25 +21,3 @@
  @import "plant.scss";
  @import "welcome.scss";
  @import "footer.scss";
-
- font {
-   color: #FE5F55;
- }
- h3 {
-   text-shadow: 2px 2px 5px #000;
-   font-size: 40px;
- }
-body {
-  background-image: image-url('city_background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #FE5F55;
-  font-family: 'Kalam', cursive;
-}
-#hardware-key {
-  color: darkblue;
-  background-color: rgba(255,255,255,0.4);
-  max-width: 300px;
-  margin: auto;
-  border-radius: 10px;
-} 

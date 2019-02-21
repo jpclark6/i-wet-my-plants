@@ -10,11 +10,7 @@ class Key
   end
 
   def valid?
-    if plant_exists? && date_time_valid? && correct_secret?
-      return true
-    else
-      return false
-    end
+    plant_exists? && date_time_valid? && correct_secret?
   end
 
   def plant_id
@@ -33,6 +29,9 @@ class Key
 
   def plant_exists?
     id = plant_id
+    if id == 0
+      return false
+    end
     Plant.find(id)
   end
 

@@ -1,43 +1,72 @@
+# I Wet My Plants
+An app that can be [found here](https://i-wet-my-plants.herokuapp.com) to help you track when to water plants in your garden. With many features it will become a staple to your summer gardening routine. Features:
 
-One Paragraph of project description goes here
+* Track when you need to water plants and your watering history 
+* Uses [Dark Sky API](https://darksky.net/dev) for real time updates on when to water based on weather forecasts for rain
+* Facebook OAuth login
+* Optional tweets sent to you from [our twitter account](https://twitter.com/iwetmyplants3) when your plants need watering
+* [Site API](http://i-wet-my-plants.herokuapp.com/api/v1) for the option to have hardware track when plants need water, and then update water status after watering
+
+![Screenshot](./app/assets/images/site-screen-shot.png "Screenshot")
+
+## Prerequisites
+
+You will need Ruby version 2.4 or greater and Rails version 5.2.
+
+To check your version using the terminal, run: `rails -v`.
+If you have not installed rails, in terminal, run: `gem install rails -v 5.2`.
 
 ## Getting Started
-If you'd like to explore this application on your local computer, please find an appropriate local directory and clone down the application utilizing the following directions:
+
+To setup on a local machine please find an appropriate directory and clone down the repo and then run the initial setup using the following commands. Note: it uses Ruby version 2.4.1 and Rails version 5.2.2.
 
 
 ```
 git clone https://github.com/jpclark6/i-wet-my-plants
 cd i-wet-my-plants
-```
-
-### Prerequisites
-
-You will need Rails installed. Please verify it is version 5.2.
-
-To check your version using the terminal, run: `rails -v`.
-If you have not installed rails, in terminal, run: `gem install rails -v 5.2`.
-
-### Installing
-
-
-Navigate to the `i-wet-my-plants` directory in your terminal.
-Run the following commands:
-```
 bundle
-bundle update
-rake db:{drop,create,migrate,seed}
-rails s
+rake db:{create,migrate,seed}
+```
+
+You will also need the following environmental variables sorted in `config/application.yml`. These can be found for free but must be kept private and will not be included.
 
 ```
-Open a new tab in your favorite browser. (Preferably your favorite browser is Google Chrome)
-
+GOOGLE_API_KEY: < used for geoservice >
+DARK_SKY_API_KEY: < for weather updates >
+FACEBOOK_SECRET: < OAuth >
+FACEBOOK_KEY: < OAuth >
+TWITTER_API: < for tweeting >
+TWITTER_SECRET_API: < for tweeting >
+TWITTER_ACCESS_TOKEN: < for tweeting >
+TWITTER_ACCESS_SECRET: < for tweeting >
+HARDWARE_SECRET_API: < for hardware API, any value will work >
+```
+Once these are ready you can run the server:
+```
+rails s
+```
 Navigate to `localhost:3000`. The application will load to the page. Enjoy!
 
-## Running the tests
+## Testing
 
-Note: Before running RSpec, ensure you're in the project root directory (`i-wet-my-plants`).
+Our testing suite uses the following tools:
 
-From terminal run: `rspec`
+* [RSpec](https://github.com/rspec/rspec-rails)
+* [Capybara](https://github.com/teamcapybara/capybara)
+* [SimpleCov](https://github.com/colszowka/simplecov)
+* [Factory Bot Rails](https://github.com/thoughtbot/factory_bot_rails)
+* [VCR](https://github.com/vcr/vcr)
+* [Webmock](https://github.com/bblimke/webmock)
+* [Faker](https://github.com/stympy/faker)
+* [Launchy](https://github.com/copiousfreetime/launchy)
+* [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers)
+
+Note: Before running RSpec, ensure you're in the project root directory (`i-wet-my-plants`). Testing includes unit and feature tests made with RSpec, 
+
+To run the full testing suite run this command from the terminal:
+```
+rspec
+```
 
 After RSpec has completed, you should see all tests passing as GREEN. Any tests that have failed or thrown an error will display RED. Any tests that have been skipped will be displayed as YELLOW.
 
@@ -136,41 +165,30 @@ end
 ## Deployment
 
 
-Our version of the Little Shop Application is hosted on [Heroku](https://i-wet-my-plants.herokuapp.com/).
+['I Wet My Plants' is currently deployed here on Heroku](https://i-wet-my-plants.herokuapp.com/).
 
-You can also deploy it on your own server by following these steps:
+You can also run it in production on your own server by following these steps:
 
 1. Have all prequisites installed (postrgres, pum, the pg gem)
+2. In your terminal, in your i-wet-my-plants directory, run:
+```
+ $ createuser -s -r i-wet-my-plants
+ $ RAILS_ENV=production rake db:{drop,create,migrate,seed}
+ $ rake assets:precompile
+ $ rails s -e production
+ ```
 
-2. In your terminal, in your little shop directory, run:
-* `$ createuser -s -r i-wet-my-plants`
-* `$ RAILS_ENV=production rake db:{drop,create,migrate,seed}`
-* `$ rake assets:precompile`
-
-3. Instead of running `rails s` which would start your server in development mode, run: `rails s -e production`
-
-## Tools Utilized
+## Additional Tools Utilized
 
 * Rails
 * PostrgeSQL
 * [Waffle.io](https://waffle.io)
 * [GitHub](github.com)
-* [FactoryBot](https://github.com/thoughtbot/factory_bot)
-* RSpec
-* Capybara
-* Pry
-* Launchy
-* SimpleCov
-* Shouldamatchers
+* [Pry](https://github.com/pry/pry)
 * Chrome dev tools
-* [Faker](https://github.com/stympy/faker)
+* [Travis CI](https://travis-ci.org/)
 
-## Versioning
-
-We used [GitHub](https://github.com/) for versioning.
-We used [Waffle.io](https://waffle.io/) as a project management tool.
-
-## Authors
+## Developers
 
 * **Justin Clark** - [jpclark6](https://github.com/jpclark6)
 * **Justin Mauldin** - [justinmauldin7](https://github.com/justinmauldin7)

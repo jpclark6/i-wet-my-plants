@@ -22,7 +22,9 @@
     <footer>
       <%= link_to image_tag("poweredby-darksky.png", :alt => "Powered By Dark Sky API", :height => "50"), "https://darksky.net/poweredby/" %>
       <% if current_user && current_user.garden %>
-        <p id='hardware-key'>Hardware Key: <%= current_user.garden.secret_key %></p>
+      <div class='hardware-key'>
+        <p>Hardware Key: <%= current_user.garden.secret_key %> <%= link_to "API Info", api_v1_path %></p>
+      </div>
       <% end %>
     </footer>
 </html>
