@@ -12,12 +12,11 @@ class PlantsController < ApplicationController
   end
 
   def create
-    garden = current_user.garden
-    @plant = garden.plants.create(plant_params)
+    @plant = current_user.garden.plants.create(plant_params)
     @plant.update(last_watered: Time.now)
     if @plant.save
-      redirect_to plants_path(@plant.id)
       flash[:success] = "Your plant was added"
+      redirect_to plants_path(@plant.id)
     else
       @errors = @plant.errors
       render :new
@@ -56,10 +55,10 @@ class PlantsController < ApplicationController
     @plant = @garden.plants.find(params[:id])
     if @plant.destroy
       flash[:success]= "Your plant has been murdered"
-      redirect_to plants_path
     else
-      falsh[:error]= "Your plant could not be deleted"
+      flash[:error]= "Your plant could not be deleted"
     end
+    redirect_to plants_path
   end
 
   def water

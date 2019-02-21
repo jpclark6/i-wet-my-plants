@@ -33,5 +33,4 @@ class SessionsController < ApplicationController
       redirect_to plants_path
     end
   end
-
 end

@@ -5,6 +5,9 @@
   water plants. The API will tell you which plants are currently due to be watered, as well
   as proide a way to reset the water counter. Using this you can create a fully automated watering
   system.</p>
+  <p>After finding out which plants need water the API will send back a key to water each plant. This key is valid for that plant only,
+  is valid for one hour only, and cannot be tampered with. These keys are not stored in the dateabase. POST requests to water a plant 
+  are verified on the server side. If valid they will reset the water counter on the plant.
   <h1>How to use API and setup watering hardware:</h1>
   <p>Hardware must be able to make GET and POST requests to integrate with the app.</p>
   <ul>
