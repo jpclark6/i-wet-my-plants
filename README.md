@@ -186,6 +186,7 @@ You can also run it in production on your own server by following these steps:
 * [GitHub](github.com)
 * [Pry](https://github.com/pry/pry)
 * Chrome dev tools
+* [Travis CI](https://travis-ci.org/)
 
 ## Developers
 
