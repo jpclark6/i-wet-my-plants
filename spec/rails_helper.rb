@@ -15,6 +15,13 @@ VCR.configure do |config|
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
 end
 
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+  'credentials' => {'token' => ENV['FACEBOOK_KEY']},
+  'info' => {'name' => 'Justin'},
+  'uid' => '12345'})
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
