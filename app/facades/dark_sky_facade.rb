@@ -12,11 +12,7 @@ class DarkSkyFacade
   end
 
   def self.raining?(zip)
-    if self.current_precip_probability(zip) > 0.8
-      return true
-    else
-      return false
-    end
+    self.current_precip_probability(zip) > 0.8    
   end
 
   private

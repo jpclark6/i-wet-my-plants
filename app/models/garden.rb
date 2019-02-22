@@ -8,7 +8,7 @@ class Garden < ApplicationRecord
 
   def plants_by_water_need
     unless plants.empty?
-      plants.select("plants.*, (EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) - (frequency - 6) * 3600) as needing_water")
+      plants.select("plants.*, (EXTRACT(EPOCH FROM (NOW() - last_watered)) - (frequency - 6) * 3600) as needing_water")
             .order('needing_water desc')
     else
       []
@@ -20,14 +20,14 @@ class Garden < ApplicationRecord
   end
 
   def plants_that_need_water
-    plants.select("plants.*, (EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) - (frequency - 6) * 3600) as needing_water")
-          .where("EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) > (frequency - 6) * 3600")
+    plants.select("plants.*, (EXTRACT(EPOCH FROM (NOW() - last_watered)) - (frequency - 6) * 3600) as needing_water")
+          .where("EXTRACT(EPOCH FROM (NOW() - last_watered)) > (frequency - 6) * 3600")
           .order('needing_water desc')
   end
 
   def plants_that_need_water_api
-    plants.select("plants.*, (EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) - (frequency) * 3600) as needing_water")
-          .where("EXTRACT(EPOCH FROM ((NOW()) - (last_watered))) > (frequency) * 3600")
+    plants.select("plants.*, (EXTRACT(EPOCH FROM (NOW() - last_watered)) - frequency * 3600) as needing_water")
+          .where("EXTRACT(EPOCH FROM (NOW() - last_watered)) > frequency * 3600")
           .order('needing_water desc')
   end
 end
