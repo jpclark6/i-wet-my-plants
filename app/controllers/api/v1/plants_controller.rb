@@ -5,7 +5,7 @@ class Api::V1::PlantsController < ApiController
     if plants.empty? 
       render json: {status: 'All plants currently watered'}
     else
-      render json: PlantsSerializer.new(plants)
+      render json: PlantSerializer.new(plants)
     end
   end
 

@@ -11,10 +11,13 @@ describe 'api for optional plant hardware' do
     
     get "/api/v1/plants?key=#{garden.secret_key}"
     expect(response).to be_successful
+
     data = JSON.parse(response.body, symbolize_names: true)
     expect(data[:data].length).to eq(1)
     expect(data[:data][0][:id]).to eq(plant_3.id.to_s)
-    expect(data[:data][0][:type]).to eq('plants')
+    expect(data[:data][0][:type]).to eq('plant')
+    expect(data[:data][0][:attributes][:name]).to eq(plant_3.name)
+    expect(data[:data][0][:attributes][:species]).to eq(plant_3.species)
 
     expect(data[:data][0][:attributes][:secret]).to_not eq(nil)
   end

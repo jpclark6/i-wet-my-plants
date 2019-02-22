@@ -40,7 +40,7 @@ describe Key do
       time = 5.hours.ago
       garden = Garden.create(name: 'Backyard', user: user, zip_code: 80026, twitter_handle: 'asdfasdf', tweet: false, secret_key: SecureRandom.hex)
       plant = Plant.create(name: 'Elbert', garden: garden, species: 'Beet', frequency: 3, last_watered: time)
-      message = "#{plant.id}.#{1.hour.from_now}"
+      message = "#{Base64.encode64(plant.id.to_s)}.#{Base64.encode64(1.hour.from_now.to_s)}"
       key = Digest::SHA256.hexdigest "#{message}#{ENV['HARDWARE_SECRET_API']}"
       expect(Key.create_water_key(plant)).to eq("#{message}.#{key}")
     end
