@@ -88,7 +88,7 @@ class PlantsController < ApplicationController
   end
 
   def find_location
-    @location = GoogleGeocodeService.new(zip_code).location_data[:results][0][:address_components][1][:long_name]
+    @location = GoogleGeocodeService.new(zip_code).find_city
     session[:location] = @location
   end
 
