@@ -1,10 +1,8 @@
 class PlantsController < ApplicationController
   def index
     @plants = current_user.garden.plants_by_water_need
-    @zip_code = current_user.garden.zip_code
-    @current_forecast = DarkSkyFacade.current_forecast(@zip_code)
-    @current_temp = DarkSkyFacade.current_temp(@zip_code)
-    @location = GoogleGeocodeService.new(@zip_code).location_data[:results][0][:address_components][1][:long_name]
+    location_saved? ? load_location : find_location
+    weather_cookies_valid? ? load_weather : find_weather
   end
 
   def new
@@ -79,5 +77,40 @@ class PlantsController < ApplicationController
 
   def plant_params
     params.require(:plant).permit(:name, :species, :frequency)
+  end
+
+  def location_saved?
+    session[:location]
+  end
+
+  def load_location
+    @location = session[:location]
+  end
+
+  def find_location
+    @location = GoogleGeocodeService.new(zip_code).location_data[:results][0][:address_components][1][:long_name]
+    session[:location] = @location
+  end
+
+  def zip_code
+    current_user.garden.zip_code
+  end
+
+  def weather_cookies_valid?
+    session[:time] && DateTime.parse(session[:time]) < 15.minutes.from_now
+  end
+
+  def load_weather
+    @current_forecast = session[:current_forecast]
+    @current_temp = session[:current_temp]
+    @location = session[:location]
+  end
+
+  def find_weather
+    @current_forecast = DarkSkyFacade.current_forecast(zip_code)
+    @current_temp = DarkSkyFacade.current_temp(zip_code)
+    session[:current_forecast] = @current_forecast
+    session[:current_temp] = @current_temp
+    session[:time] = Time.now
   end
 end
