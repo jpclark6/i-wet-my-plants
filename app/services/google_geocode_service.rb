@@ -11,6 +11,10 @@ class GoogleGeocodeService
     location_data[:results][0][:geometry][:location][:lng]
   end
 
+  def find_city
+    location_data[:results][0][:address_components][2][:long_name]
+  end
+
   def location_data
     get_json("/maps/api/geocode/json?address=#{@zip}")
   end
