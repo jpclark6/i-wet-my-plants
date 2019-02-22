@@ -1,3 +1,7 @@
+html {
+  background-color: #91C863;
+}
+
 .garden-body {
   margin: auto;
   text-align: center;
@@ -14,6 +18,7 @@
 }
 .garden {
   padding-top: 20px;
+  max-width: 850px;
   background-color: rgba(255,255,255,0.6);
   border: 1px solid white;
   border-radius: 20px;
@@ -62,7 +67,6 @@
 }
 
 .current-weather {
-  width: 35%;
   padding-left: 30px;
   margin-top: 20px;
   text-align: center;
@@ -82,7 +86,6 @@
 }
 
 .garden {
-  width: 65%;
   margin: 0 80px 0 0;
 }
 
