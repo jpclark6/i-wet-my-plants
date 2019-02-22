@@ -12,7 +12,7 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 require 'simplecov'
-SimpleCov.start do
+SimpleCov.start 'rails' do
   add_filter "app/channels/application_cable/channel.rb"
   add_filter "app/channels/application_cable/connection.rb"
   add_filter "app/jobs/application_job.rb"

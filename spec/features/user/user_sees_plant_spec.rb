@@ -14,7 +14,6 @@ describe 'as a registered user' do
     expect(page).to have_content("Last Watered: #{plant_1.last_watered.to_date}")
 
     expect(page).to have_link("Edit Plant")
-    expect(page).to have_link("Kill Me")
   end
   it 'create a plant happy path', :vcr do
     user_1 = create(:user)
@@ -177,7 +176,7 @@ describe 'as a registered user' do
 
    visit plant_path(plant_1)
 
-   click_on "Kill Me"
+   click_on "Remove Plant"
 
    expect(current_path).to eq(plants_path)
    expect(page).to_not have_content(plant_1.name)

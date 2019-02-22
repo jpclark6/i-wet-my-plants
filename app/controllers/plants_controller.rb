@@ -51,7 +51,7 @@ class PlantsController < ApplicationController
     @garden = @user.garden
     @plant = @garden.plants.find(params[:id])
     if @plant.destroy
-      flash[:success]= "Your plant has been murdered"
+      flash[:success]= "Your plant has been removed"
     else
       flash[:error]= "Your plant could not be deleted"
     end
